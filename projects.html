@@ -10,34 +10,41 @@
 </head>
 <body class="bg-gray-900 text-white">
     <nav id="desktop-nav">
-    
+
         <div class="logo">
-            <a href="index.html" class="text-2xl font-bold bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent"> Ghazi Abdullah</a>
+            <!--Old logo style--> 
+            <!--<a href="index.html" class="logo text-2xl font-bold text-emerald-400 transition-all duration-300 hover:text-emerald-300 hover:drop-shadow-[0_0_8px_rgba(52,211,153,0.4)]"> Ghazi Abdullah</a>-->
+            <a href="index.html" class="text-2xl font-bold bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent hover:animate-pulse transition-all duration-300"> Ghazi Abdullah</a>
         </div>
-        <div>
+
+        <div class="nav-links-container">
             <ul class="nav-links">
                 <li>
-                    <a href="about.html" class="logo text-2xl font-bold text-gray-300 
-                            transition-all duration-300 hover:text-emerald-300 
-                            hover:drop-shadow-[0_0_8px_rgba(52,211,153,0.4)]">About
+                    <a href="about.html" 
+                    class="logo text-2xl font-bold text-gray-300 
+                    transition-all duration-300 hover:text-emerald-300 
+                    hover:drop-shadow-[0_0_8px_rgba(52,211,153,0.4)] hover:animate-pulse transition-all duration-300">About
+                    </a>
+            </li>
+                <li>
+                    <a href="experience.html"
+                    class="logo text-2xl font-bold text-gray-300 
+                    transition-all duration-300 hover:text-emerald-300 
+                    hover:drop-shadow-[0_0_8px_rgba(52,211,153,0.4)] hover:animate-pulse transition-all duration-300">Experience
                     </a>
                 </li>
                 <li>
-                    <a href="experience.html" class="logo text-2xl font-bold text-gray-300 
-                            transition-all duration-300 hover:text-emerald-300 
-                            hover:drop-shadow-[0_0_8px_rgba(52,211,153,0.4)]">Experience
+                    <a href="projects.html"
+                    class="logo text-2xl font-bold text-gray-300 
+                    transition-all duration-300 hover:text-emerald-300 
+                    hover:drop-shadow-[0_0_8px_rgba(52,211,153,0.4)] hover:animate-pulse transition-all duration-300">Projects
                     </a>
                 </li>
                 <li>
-                    <a href="projects.html" class="logo text-2xl font-bold text-gray-300 
-                            transition-all duration-300 hover:text-emerald-300 
-                            hover:drop-shadow-[0_0_8px_rgba(52,211,153,0.4)]">Projects
-                    </a>
-                </li>
-                <li>
-                    <a href="contact.html" class="logo text-2xl font-bold text-gray-300
-                            transition-all duration-300 hover:text-emerald-300 
-                            hover:drop-shadow-[0_0_8px_rgba(52,211,153,0.4)]">Contact
+                    <a href="contact.html"
+                    class="logo text-2xl font-bold text-gray-300
+                    transition-all duration-300 hover:text-emerald-300 
+                    hover:drop-shadow-[0_0_8px_rgba(52,211,153,0.4)] hover:animate-pulse transition-all duration-300">Contact
                     </a>
                 </li>
             </ul>
@@ -45,62 +52,66 @@
     </nav>
     <nav id="hamburger-nav" class="relative z-50">
         <div class="container mx-auto flex items-center justify-between px-4 py-4">
-            <a href="index.html" class="logo text-2xl font-bold text-emerald-400 
-                            transition-all duration-300 hover:text-emerald-300 
-                            hover:drop-shadow-[0_0_8px_rgba(52,211,153,0.4)]">
-                Ghazi Abdullah
-            </a>
-    
+                <a href="index.html" class="logo text-2xl font-bold text-emerald-400 
+                        transition-all duration-300 hover:text-emerald-300 
+                        hover:drop-shadow-[0_0_8px_rgba(52,211,153,0.4)]">
+                    Ghazi Abdullah
+                </a>
+            
             <div class="hamburger-menu">
                 <button class="hamburger-icon group" onclick="toggleMenu()">
                     <span class="block h-0.5 w-8 bg-emerald-400 transition-all group-active:bg-emerald-300"></span>
-                    <span class="block h-0.5 w-8 bg-emerald-400 transition-all group-active:bg-emerald-300"></span>
+                    <span class="block h-0.5 w-8 bg-emerald-400 transition-all group-active:bg-emerald-400"></span>
                     <span class="block h-0.5 w-8 bg-emerald-400 transition-all group-active:bg-emerald-300"></span>
                 </button>
     
                 <div class="menu-links absolute right-0 top-full max-w-6xl origin-top scale-y-0 
-                        bg-gray-900/95 backdrop-blur-xl transition-all duration-300"
+                    bg-gray-900/95 backdrop-blur-xl transition-all duration-300" 
                     style="box-shadow: 0 8px 32px rgba(16, 185, 129, 0.1)">
     
                     <ul class="flex flex-col gap-4 p-2">
-                        <li>
-                            <a href="about.html" onclick="toggleMenu()" class="text-xl text-gray-300 hover:text-emerald-400 
-                                    transition-all flex items-center gap-2 
-                                    before:text-emerald-400 before:opacity-0 before:transition-all 
-                                    hover:before:opacity-100 hover:before:translate-x-2">About
-                            </a>
-                        </li>
+                    <li>
+                        <a href="about.html" onclick="toggleMenu()"
+                                class="text-2xl text-gray-300 hover:text-emerald-400 
+                                transition-all flex items-center gap-2 
+                                before:text-emerald-400 before:opacity-0 before:transition-all 
+                                hover:before:opacity-100 hover:before:translate-x-2 hover:animate-pulse transition-all duration-300">About
+                        </a>
+                    </li>
     
-                        <li>
-                            <!--if i want to add an arrow beside the link ==>> before:content-['→']-->
-                            <a href="experience.html" onclick="toggleMenu()" class="text-xl text-gray-300 hover:text-emerald-400 
-                                    transition-all flex items-center gap-2 
-                                    before:text-emerald-400 before:opacity-0 before:transition-all 
-                                    hover:before:opacity-100 hover:before:translate-x-2">Experience
-                            </a>
-                        </li>
+                    <li>
+                        <!--if i want to add an arrow beside the link ==>> before:content-['→']-->
+                        <a href="experience.html" onclick="toggleMenu()" 
+                                class="text-xl text-gray-300 hover:text-emerald-400 
+                                transition-all flex items-center gap-2 
+                                before:text-emerald-400 before:opacity- before:transition-all 
+                                hover:before:opacity-100 hover:before:translate-x-2 hover:animate-pulse transition-all duration-300">Experience
+                        </a>
+                    </li>
     
-                        <li>
-                            <a href="projects.html" onclick="toggleMenu()" class="text-xl text-gray-300 hover:text-emerald-400 
-                                    transition-all flex items-center gap-2
-                                    before:text-emerald-400 before:opacity-0 before:transition-all 
-                                    hover:before:opacity-100 hover:before:translate-x-2">Projects
-                            </a>
-                        </li>
+                    <li>
+                        <a href="projects.html" onclick="toggleMenu()"
+                                class="text-xl text-gray-300 hover:text-emerald-400 
+                                transition-all flex items-center gap-2
+                                before:text-emerald-400 before:opacity-0 before:transition-all 
+                                hover:before:opacity-100 hover:before:translate-x-2 hover:animate-pulse transition-all duration-300">Projects
+                        </a>
+                    </li>
     
-                        <li>
-                            <a href="contact.html" onclick="toggleMenu()" class="text-xl text-gray-300 hover:text-emerald-400 
-                                    transition-all flex items-center gap-2 
-                                    before:text-emerald-400 before:opacity-0 before:transition-all 
-                                    hover:before:opacity-100 hover:before:translate-x-2">Contact
-                            </a>
-                        </li>
-    
+                    <li>
+                        <a href="contact.html" onclick="toggleMenu()"
+                           class="text-xl text-gray-300 hover:text-emerald-400 
+                                transition-all flex items-center gap-2 
+                                before:text-emerald-400 before:opacity-0 before:transition-all 
+                                hover:before:opacity-100 hover:before:translate-x-2 hover:animate-pulse transition-all duration-300">Contact
+                        </a>
+                    </li>
+                    
                     </ul>
                 </div>
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
     <!--<nav id="desktop-nav">
         <div class="logo"> <a href="index.html"><span>Ghazi Abdullah</span></a></div>
         <div>
@@ -129,53 +140,64 @@
         </div>
     </nav>-->
 
-    <section id="projects" class="py-24 px-4 sm:px-8 lg:px-20 bg-gradient-to-b from-gray-900 to-gray-800">
+    <section id="projects" class="sm:px-8 lg:px-20 bg-gradient-to-b from-gray-900 to-gray-800">
     
     
-        <p class="section__text__p1 text-center bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent mb-2 text-lg font-mono tracking-widest mt-2 hover:animate-pulse transition-all duration-300">Browse my Recent</p>
+        <p class="section__text__p1 text-center bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent 
+                  mb-2 text-lg font-mono tracking-widest mt-2 hover:animate-pulse transition-all duration-300">Browse my Recent</p>
         
         <h1 class="title text-center text-5xl md:text-6xl font-bold text-gray-100 mb-16 relative">Projects</h1>
     
         <div class="experience-details-container bg-gray-800 p-8 rounded-2xl border border-emerald-400/20 hover:border-emerald-400/40 transition-all duration-300 mb-6">
             <div class="about-containers">
     
-                <div class="details-container color-container bg-gradient-to-b from-gray-900 to-gray-800 text-white bg-gray-800 p-8 rounded-2xl border border-emerald-400/20 hover:border-emerald-400/40 transition-all duration-300 mb-12">
+                <div class="details-container color-container bg-gradient-to-b from-gray-900 to-gray-800 text-white bg-gray-800 p-8
+                             rounded-2xl border border-emerald-400/20 hover:border-emerald-400/40 transition-all duration-300 mb-12 hover:animate-pulse transition-all duration-300">
     
                     <div class="article-container h-64 w-full overflow-hidden rounded-xl mb-4">
-                        <img src="./assets/Villa.png" alt="Project 1" class="project-img" />
+                        <img src="./assets/Villa.png" alt="Project 1" class="project-img hover:animate-pulse transition-all duration-300" />
                     </div>
-                    <h2 class="experience-sub-title project-title"><span class="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">API</span></h2>
+                    <h2 class="experience-sub-title project-title"><span class="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">Booking</span></h2>
                     <div class="btn-container">
                        
-                        <button class="btn btn-color-2 project-btn border-emerald-400  hover:bg-gradient-to-r from-emerald-600 to-cyan-600 hover:bg-emerald-600 text-white rounded-lg transform hover:scale-105 transition-all duration-300 font-semibold shadow-lg shadow-emerald-500/30 hover:animate-pulse transition-all duration-300"
+                        <button class="btn hover:bg-gradient-to-r from-emerald-600 to-cyan-600 hover:bg-emerald-600 text-white rounded-lg transform hover:scale-105 
+                                       transition-all duration-300 font-semibold shadow-lg shadow-emerald-500/30 hover:animate-pulse transition-all duration-300"
                             onclick="location.href='https://github.com/Ghazi-Abdullah'">Github</button>
                         <!--<button class="btn btn-color-2 project-btn border-emerald-400  hover:bg-emerald-600 text-white rounded-lg transform hover:scale-105 transition-all duration-300 font-semibold shadow-lg shadow-emerald-500/30"
                             onclick="location.href='https://github.com/Ghazi-Abdullah'">Live Demo</button>-->
                     </div>
                 </div>
     
-                <div class="details-container color-container bg-gradient-to-b from-gray-900 to-gray-800 text-white bg-gray-800 p-8 rounded-2xl border border-emerald-400/20 hover:border-emerald-400/40 transition-all duration-300 mb-12">
+                <div class="details-container color-container bg-gradient-to-b from-gray-900 to-gray-800 text-white bg-gray-800 p-8 
+                            rounded-2xl border border-emerald-400/20 hover:border-emerald-400/40 transition-all duration-300 mb-12 hover:animate-pulse transition-all duration-300">
                     <div class="article-container h-64 w-full overflow-hidden rounded-xl mb-4">
-                        <img src="./assets/API.png" alt="Project Two" class="project-img" />
+                        <img src="./assets/API.png" alt="Project Two" class="project-img hover:animate-pulse transition-all duration-300" />
                     </div>
     
-                    <h2 class="experience-sub-title project-title"><span class="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">open project</span></h2>
+                    <h2 class="experience-sub-title project-title">
+                        <span class="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">
+                            API
+                        </span>
+                    </h2>
                     <div class="btn-container">
-                        <button class="btn btn-color-2 project-btn border-emerald-400  hover:bg-gradient-to-r from-emerald-600 to-cyan-600 hover:bg-emerald-600 text-white rounded-lg transform hover:scale-105 transition-all duration-300 font-semibold shadow-lg shadow-emerald-500/30 hover:animate-pulse transition-all duration-300"
+                        <button class="btn hover:bg-gradient-to-r from-emerald-600 to-cyan-600 hover:bg-emerald-600 text-white rounded-lg transform hover:scale-105
+                                       transition-all duration-300 font-semibold shadow-lg shadow-emerald-500/30 hover:animate-pulse transition-all duration-300"
                             onclick="location.href='https://github.com/Ghazi-Abdullah'">Github</button>
                         <!--<button class="btn btn-color-2 project-btn border-emerald-400  hover:bg-emerald-600 text-white rounded-lg transform hover:scale-105 transition-all duration-300 font-semibold shadow-lg shadow-emerald-500/30"
                             onclick="location.href='https://github.com/Ghazi-Abdullah'">Live Demo</button>-->
                     </div>
                 </div>
     
-                <div class="details-container color-container bg-gradient-to-b from-gray-900 to-gray-800 text-white bg-gray-800 p-8 rounded-2xl border border-emerald-400/20 hover:border-emerald-400/40 transition-all duration-300 mb-12">
+                <div class="details-container color-container bg-gradient-to-b from-gray-900 to-gray-800 text-white bg-gray-800 p-8
+                            rounded-2xl border border-emerald-400/20 hover:border-emerald-400/40 transition-all duration-300 mb-12 hover:animate-pulse transition-all duration-300">
                     <div class="article-container h-64 w-full overflow-hidden rounded-xl mb-4">
-                        <img src="./assets/Bulky.png" alt="Project Three" class="project-img" />
+                        <img src="./assets/Bulky.png" alt="Project Three" class="project-img hover:animate-pulse transition-all duration-300" />
                     </div>
     
                     <h2 class="experience-sub-title project-title"><span class="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">E-commerce</span></h2>
                     <div class="btn-container">
-                        <button class="btn btn-color-2 project-btn border-emerald-400 hover:bg-gradient-to-r from-emerald-600 to-cyan-600 hover:bg-emerald-600 text-white rounded-lg transform hover:scale-105 transition-all duration-300 font-semibold shadow-lg shadow-emerald-500/30 hover:animate-pulse transition-all duration-300"
+                        <button class="btn hover:bg-gradient-to-r from-emerald-600 to-cyan-600 hover:bg-emerald-600 text-white rounded-lg transform hover:scale-105 
+                                       transition-all duration-300 font-semibold shadow-lg shadow-emerald-500/30 hover:animate-pulse transition-all duration-300"
                             onclick="location.href='https://github.com/Ghazi-Abdullah'">Github</button>
                     <!--This old style button-->
                     <!--<button class="btn btn-color-2 project-btn"-->
