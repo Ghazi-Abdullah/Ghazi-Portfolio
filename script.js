@@ -49,8 +49,8 @@ function toggleMenu() {
                  //If i want i can add text befor the date Ex: Last Updated:
                 `${now.toLocaleDateString('en-US', options)}`;
             
-            document.getElementById('timestamp').textContent = 
-                `Page loaded at: ${now.toLocaleTimeString()}`;
+            /*document.getElementById('timestamp').textContent = 
+                `Page loaded at: ${now.toLocaleTimeString()}`;*/
         }
 
         // Update time every second
