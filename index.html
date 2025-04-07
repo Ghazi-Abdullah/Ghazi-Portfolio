@@ -9,7 +9,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/@heroicons/v2.0.18/24/outline/index.js"></script>
 </head>
-<body class="bg-gray-900 text-white">
+<!--The old background color was " from-gray-900 to-gray-800 ", in the body was " bg-gray " -->
+<body class="bg-black text-white">
     <nav id="desktop-nav">
 
         <div class="logo">
@@ -123,7 +124,7 @@
             </div>
         </div>
     </nav>
-    <section id="profile" class="py-16 px-4 sm:px-8 lg:px-20 bg-gradient-to-b from-gray-900 to-gray-800 mt-16">
+    <section id="profile" class="py-16 px-4 sm:px-8 lg:px-20 bg-gradient-to-b from-black to-gray-900 mt-16">
     <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12">
         <!-- الصورة الشخصية -->
         <div class="section__pic-container relative flex-shrink-0 group">
@@ -143,17 +144,17 @@
             </div>
         
             <!-- الصورة الثابتة -->
-            <div class="relative z-10 w-64 h-64 md:w-90 md:h-90 lg:w-96 lg:h-96 
+            <div class="relative z-50 w-64 h-64 md:w-90 md:h-90 lg:w-96 lg:h-96 
                         rounded-full overflow-hidden shadow-[0_20px_50px_rgba(4,255,0,0.05)] 
                         hover:shadow-[0_20px_50px_rgba(4,255,0,0.1)] transition-all duration-500">
 
-                <img src="./assets/profile-pic.png" alt="Ghazi Abdallah profile picture" class="w-full h-full object-cover ">
+                <img src="./assets/ghazi.png" alt="Ghazi Abdallah profile picture" class="w-full h-full object-cover items-center">
             </div>
         </div>
 
         <!-- النصوص والأزرار -->
         <div class="section__text text-center md:text-left space-y-6">
-            <p class="text-lg md:text-xl bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent font-mono">Software Developer</p>
+            <p class="text-lg md:text-xl bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent font-mono hover:animate-pulse transition-all duration-300">Software Developer</p>
             <div class="space-y-2">
                 <p class="text-2xl md:text-3xl text-gray-300">Hello, I'm</p>
                 <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white">
@@ -166,7 +167,7 @@
                 </h1>
             </div>
 
-            <div class="bg-gray-800 p-8 rounded-2xl border border-emerald-400/20 
+            <div class="bg-from-black to-gray-900 p-8 rounded-2xl border border-emerald-400/20 
                         hover:border-emerald-400/40 transition-all duration-300">
                 <p class="text-gray-300 leading-relaxed text-lg md:text-xl font-light ">
                 <ul>
@@ -228,17 +229,17 @@
                                           font-light sm:flex-row gap-8 items-center justify-between px-8 py-3">
                 <div class="text-center">
                     <div class="text-4xl md:text-5xl font-bold text-white animate-countup" data-target="2">0</div>
-                    <div class="text-gray-400 text-sm md:text-base mt-1">Years Experience</div>
+                    <div class="text-gray-400 text-sm md:text-base mt-1"><a href="experience.html">Years Experience</a></div>
                 </div>
             
                 <div class="text-center">
                     <div class="text-4xl md:text-5xl font-bold text-white animate-countup" data-target="2">9</div>
-                    <div class="text-gray-400 text-sm md:text-base mt-1">Technologies Used</div>
+                    <div class="text-gray-400 text-sm md:text-base mt-1"><a href="experience.html">Technologies Used</a></div>
                 </div>
             
                 <div class="text-center">
                     <div class="text-4xl md:text-5xl font-bold text-white animate-countup" data-target="4">0</div>
-                    <div class="text-gray-400 text-sm md:text-base mt-1">Projects Done</div>
+                    <div class="text-gray-400 text-sm md:text-base mt-1"> <a href="projects.html">Projects Done</a></div>
                 </div>
             </div>
 
