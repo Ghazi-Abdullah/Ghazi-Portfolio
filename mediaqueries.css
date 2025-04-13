@@ -3,6 +3,9 @@
       height: 83vh;
       margin-bottom: 6rem;
    }   
+   .section__pic-border-container{
+      display: block;
+   }
    .about-containers{
       flex-wrap: wrap;
    }
@@ -129,7 +132,8 @@
       gap: 0.5rem;
       text-align: center;
    }
-   .section__pic-container{
+   .section__pic-container,
+   .section__pic-border-container{
       width: auto;
       height: 40vh;
       justify-content: center;
