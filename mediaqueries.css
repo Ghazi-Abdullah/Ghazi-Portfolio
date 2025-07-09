@@ -1,4 +1,4 @@
-@media screen and (max-width: 1400px){
+/*@media screen and (max-width: 1400px){
    #profile{
       height: 83vh;
       margin-bottom: 6rem;
@@ -10,6 +10,7 @@
       flex-wrap: wrap;
    }
   }
+  
 @media screen and (max-width: 1200px){
  #desktop-nav{
     display: none;
@@ -148,4 +149,151 @@
    .text-container{
       text-align: justify;
    }
+}*/
+
+
+
+/* ترتيب استعلامات الوسائط من الأكبر إلى الأصغر (تسلسل هرمي صحيح) */
+@media screen and (max-width: 1400px) {
+  #profile {
+    height: 83vh;
+    margin-bottom: 6rem;
+  }
+  
+  .section__pic-border-container {
+    display: block;
+  }
+  
+  .about-containers {
+    flex-wrap: wrap;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  #desktop-nav {
+    display: none;
+  }
+  
+  #hamburger-nav {
+    display: flex;
+  }
+  
+  #experience,
+  .experience-details-container {
+    margin-top: 2rem;
+  }
+  
+  #profile, 
+  .section-container {
+    display: block;
+  }
+  
+  .arrow {
+    display: none;
+  }
+  
+  section,
+  .section-container {
+    height: fit-content;
+  }
+  
+  section {
+    margin: 0 5%;
+  }
+  
+  .section__pic-container {
+    margin: 0 auto 2rem;
+  }
+  
+  .about-containers {
+    margin-top: 0;
+  }
+}
+
+/* دمج استعلامات 400px و600px لتجنب التكرار */
+@media screen and (max-width: 600px) {
+  #contact,
+  footer {
+    height: 40vh;
+  }
+  
+  #profile {
+    height: 83vh;
+    margin-top: 0;
+  }
+  
+  article {
+    font-size: 1rem;
+  }
+  
+  footer nav {
+    height: fit-content;
+    margin-bottom: 2rem;
+  }
+  
+  .about-containers,
+  .contact-info-upper-container, 
+  .btn-container {
+    flex-wrap: wrap;
+  }
+  
+  .contact-info-container {
+    margin: 0;
+  }
+  
+  .contact-info-container p, 
+  .nav-links li a {
+    font-size: 1rem;
+  }
+  
+  .experience-sub-title {
+    font-size: 1.25rem;
+  }
+  
+  .logo {
+    font-size: 1.5rem;
+  }
+  
+  .nav-links {
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
+  
+  .section__pic-container {
+    width: auto;
+    height: 40vh;
+    justify-content: center;
+    margin: 0 auto 2rem; /* إضافة ثبات في الهوامش */
+  }
+  
+  .section__pic-border-container {
+    display: none;
+  }
+  
+  .section__text__p2 {
+    font-size: 1.75rem; /* حجم خط أكثر معقولية للجوال */
+  }
+  
+  .text-container {
+    text-align: justify;
+    hyphens: auto; /* تقطيع الكلمات عند الحاجة */
+  }
+}
+
+/* حذف استعلام 400px المنفصل (تم دمج قواعده مع 600px) */
+
+/* إضافة نقطة كسر جديدة للشاشات الصغيرة جداً */
+@media screen and (max-width: 350px) {
+  .section__text__p2 {
+    font-size: 1.5rem;
+  }
+  
+  .logo {
+    font-size: 1.25rem;
+  }
+  
+  #profile {
+    height: 85vh;
+  }
 }
