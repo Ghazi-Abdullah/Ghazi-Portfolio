@@ -29,7 +29,7 @@ body {
 .bg-primary {
     background-color: hsl(var(--primary-hue), 89%, 53%) !important;
 }
-
+   
 .bg-primary-dark {
     background-color: hsl(var(--primary-hue), 89%, 43%) !important;
 }
