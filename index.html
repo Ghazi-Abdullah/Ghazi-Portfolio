@@ -8,38 +8,46 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="mediaqueries.css">
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- جذر واحد للألوان - نظام HSL -->
+
+    <!-- تحسينات لنظام الألوان مع تحسين التباين -->
     <style>
         :root {
-            /* متغير واحد يتحكم في جميع الألوان */
-            --primary-hue: 25; /* درجة اللون البرتقالي (0-360) */
+            /* تحسين درجة اللون الرئيسي ليكون أكثر احترافية */
+            --primary-hue: 25;
             
-            /* قيم ثابتة للإشباع والإضاءة */
-            --saturation: 89%;
-            --lightness: 53%;
+            /* تحسين الإشباع والإضاءة لتحسين التباين */
+            --saturation: 85%;
+            --lightness: 55%;
             
-            /* جميع الألوان مشتقة من --primary-hue فقط */
+            /* ألوان رئيسية مشتقة */
             --primary-color: hsl(var(--primary-hue), var(--saturation), var(--lightness));
-            --primary-dark: hsl(var(--primary-hue), var(--saturation), calc(var(--lightness) - 10%));
-            --primary-light: hsl(var(--primary-hue), var(--saturation), calc(var(--lightness) + 10%));
-            --primary-transparent: hsla(var(--primary-hue), var(--saturation), var(--lightness), 0.1);
-            --primary-border: hsla(var(--primary-hue), var(--saturation), var(--lightness), 0.2);
-            --primary-border-hover: hsla(var(--primary-hue), var(--saturation), var(--lightness), 0.4);
-            --primary-shadow: hsla(var(--primary-hue), var(--saturation), var(--lightness), 0.2);
+            --primary-dark: hsl(var(--primary-hue), var(--saturation), calc(var(--lightness) - 15%));
+            --primary-light: hsl(var(--primary-hue), var(--saturation), calc(var(--lightness) + 15%));
+            --primary-transparent: hsla(var(--primary-hue), var(--saturation), var(--lightness), 0.15);
+            --primary-border: hsla(var(--primary-hue), var(--saturation), var(--lightness), 0.3);
+            --primary-border-hover: hsla(var(--primary-hue), var(--saturation), var(--lightness), 0.6);
+            --primary-shadow: hsla(var(--primary-hue), var(--saturation), var(--lightness), 0.25);
             
-            /* ألوان الخلفية */
-            --bg-dark: #111827;
-            --bg-darker: #0f172a;
-            --bg-card: rgba(31, 41, 55, 0.5);
+            /* تحسين ألوان الخلفية مع تدرجات أكثر دقة */
+            --bg-dark: #0f172a;
+            --bg-darker: #0a0f1f;
+            --bg-card: rgba(30, 41, 59, 0.4);
             
-            /* ألوان النصوص */
-            --text-light: #f9fafb;
-            --text-gray: #d1d5db;
-            --text-dark: #9ca3af;
+            /* تحسين ألوان النصوص لتحقيق تباين أفضل */
+            --text-light: #f1f5f9;
+            --text-gray: #cbd5e1;
+            --text-dark: #94a3b8;
+            --text-muted: #64748b;
         }
-        
-        /* فئات CSS مخصصة تستخدم متغير واحد فقط */
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.7;
+            letter-spacing: 0.01em;
+        }
+
+        /* تحسينات للفئات الرئيسية */
         .text-primary { color: var(--primary-color) !important; }
         .text-primary-dark { color: var(--primary-dark) !important; }
         .text-primary-light { color: var(--primary-light) !important; }
@@ -53,342 +61,202 @@
         .border-primary-transparent { border-color: var(--primary-border) !important; }
         .border-primary-hover:hover { border-color: var(--primary-border-hover) !important; }
         
-        .shadow-primary { box-shadow: 0 4px 6px -1px var(--primary-shadow) !important; }
-        .shadow-primary-hover:hover { box-shadow: 0 4px 6px -1px hsla(var(--primary-hue), var(--saturation), var(--lightness), 0.3) !important; }
+        .shadow-primary { box-shadow: 0 4px 12px -1px var(--primary-shadow) !important; }
+        .shadow-primary-hover:hover { box-shadow: 0 6px 16px -1px hsla(var(--primary-hue), var(--saturation), var(--lightness), 0.35) !important; }
+
+        /* تحسينات التدرج والظلال */
+        .gradient-bg {
+            background: linear-gradient(135deg, var(--bg-darker) 0%, var(--bg-dark) 100%);
+        }
         
-        /* كلاسيس hover */
-        .hover\:text-primary:hover { color: var(--primary-color) !important; }
-        .hover\:bg-primary:hover { background-color: var(--primary-color) !important; }
-        .hover\:bg-primary-dark:hover { background-color: var(--primary-dark) !important; }
-        .hover\:bg-primary-transparent:hover { background-color: var(--primary-transparent) !important; }
-        .hover\:border-primary:hover { border-color: var(--primary-color) !important; }
+        .card-gradient {
+            background: linear-gradient(145deg, rgba(30, 41, 59, 0.4), rgba(15, 23, 42, 0.6));
+        }
+        
+        .hover-lift {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.3);
+        }
+
+        /* تحسينات الطباعة */
+        h1, h2, h3, h4, h5, h6 {
+            letter-spacing: -0.025em;
+            line-height: 1.2;
+        }
+        
+        h1 { font-weight: 800; }
+        h2 { font-weight: 700; }
+        h3 { font-weight: 600; }
+        
+        /* تحسينات الروابط */
+        a {
+            transition: all 0.25s ease;
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* تحسينات الأزرار */
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: white;
+            font-weight: 600;
+            padding: 0.75rem 2rem;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+            border: none;
+            box-shadow: 0 4px 12px -2px var(--primary-shadow);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px -2px var(--primary-shadow);
+        }
+        
+        .btn-outline {
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            background: transparent;
+            font-weight: 600;
+            padding: 0.75rem 2rem;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary-transparent);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px -2px var(--primary-shadow);
+        }
+
+        /* تحسينات البطاقات */
+        .card {
+            background: var(--bg-card);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--primary-border);
+            border-radius: 1rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .card:hover {
+            border-color: var(--primary-border-hover);
+        }
+
+        /* تحسينات القسم */
+        section {
+            padding-top: 5rem;
+            padding-bottom: 5rem;
+        }
+        
+        .section-title {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary-color);
+            border-radius: 3px;
+        }
+
+        /* تحسينات الشريط الجانبي */
+        .progress-bar {
+            height: 8px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-color), var(--primary-light));
+            border-radius: 4px;
+            transition: width 1s ease-in-out;
+        }
     </style>
 </head>
-<!--The old background color was " from-gray-900 to-gray-800 ", in the body was " bg-gray " -->
 
-<body class="bg-black text-white">
-    <nav id="desktop-nav">
-
-        <div class="logo">
-            <!--Old logo style-->
-            <!--<a href="index.html" class="logo text-2xl font-bold text-emerald-400 transition-all duration-300 hover:text-emerald-300 hover:drop-shadow-[0_0_8px_rgba(52,211,153,0.4)]"> Ghazi Abdullah</a>-->
-            <a href="index.html" class="text-2xl font-bold bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent hover:text-emerald-300 
-            hover:drop-shadow-[0_0_8px_rgba(52,211,153,0.4)] hover:animate-pulse transition-all duration-300"> Ghazi
-                Abdullah</a>
-
-            <!--<p id="timestamp" class="w-28 h-28 text-sm"></p>-->
-
-        </div>
-
-
-        <div class="nav-links-container">
-            <ul class="nav-links">
-                <li>
-                    <a href="about.html"
-                        class="logo text-2xl font-bold text-gray-300 
-                    transition-all duration-300 hover:text-emerald-300 
-                    hover:drop-shadow-[0_0_8px_rgba(52,211,153,0.4)] hover:animate-pulse transition-all duration-300">About
-                    </a>
-                </li>
-                <li>
-                    <a href="experience.html"
-                        class="logo text-2xl font-bold text-gray-300 
-                    transition-all duration-300 hover:text-emerald-300 
-                    hover:drop-shadow-[0_0_8px_rgba(52,211,153,0.4)] hover:animate-pulse transition-all duration-300">Experience
-                    </a>
-                </li>
-                <li>
-                    <a href="projects.html"
-                        class="logo text-2xl font-bold text-gray-300 
-                    transition-all duration-300 hover:text-emerald-300 
-                    hover:drop-shadow-[0_0_8px_rgba(52,211,153,0.4)] hover:animate-pulse transition-all duration-300">Projects
-                    </a>
-                </li>
-                <li>
-                    <a href="contact.html"
-                        class="logo text-2xl font-bold text-gray-300
-                    transition-all duration-300 hover:text-emerald-300 
-                    hover:drop-shadow-[0_0_8px_rgba(52,211,153,0.4)] hover:animate-pulse transition-all duration-300">Contact
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-    <nav id="hamburger-nav" class="relative z-50">
-
-        <div class="container mx-auto flex items-center justify-between px-4 py-4">
-
-            <a href="index.html" class="text-2xl font-bold bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent hover:text-emerald-300 
-            hover:drop-shadow-[0_0_8px_rgba(52,211,153,0.4)] hover:animate-pulse transition-all duration-300"> Ghazi
-                Abdullah </a>
-
-            <!--<a href="index.html" class="logo text-2xl font-bold text-emerald-400 
-                    transition-all duration-300 hover:text-emerald-300 
-                    hover:drop-shadow-[0_0_8px_rgba(52,211,153,0.4)]">
-                Ghazi Abdullah
-            </a>-->
-
-            <div class="hamburger-menu">
-                <button class="hamburger-icon group" onclick="toggleMenu()">
-                    <span class="block h-0.5 w-8 bg-emerald-400 transition-all group-active:bg-emerald-300"></span>
-                    <span class="block h-0.5 w-8 bg-emerald-400 transition-all group-active:bg-emerald-400"></span>
-                    <span class="block h-0.5 w-8 bg-emerald-400 transition-all group-active:bg-emerald-300"></span>
-                </button>
-
-                <div class="menu-links absolute right-0 top-full max-w-6xl origin-top scale-y-0 
-                bg-gray-900/95 backdrop-blur-xl transition-all duration-300"
-                    style="box-shadow: 0 8px 32px rgba(16, 185, 129, 0.1)">
-
-                    <ul class="flex flex-col gap-4 p-2">
-                        <li>
-                            <a href="about.html" onclick="toggleMenu()"
-                                class="text-2xl text-gray-300 hover:text-emerald-400 
-                            transition-all flex items-center gap-2 
-                            before:text-emerald-400 before:opacity-0 before:transition-all 
-                            hover:before:opacity-100 hover:before:translate-x-2 hover:animate-pulse transition-all duration-300">About
-                            </a>
-                        </li>
-
-                        <li>
-                            <!--if i want to add an arrow beside the link ==>> before:content-['→']-->
-                            <a href="experience.html" onclick="toggleMenu()"
-                                class="text-xl text-gray-300 hover:text-emerald-400 
-                            transition-all flex items-center gap-2 
-                            before:text-emerald-400 before:opacity- before:transition-all 
-                            hover:before:opacity-100 hover:before:translate-x-2 hover:animate-pulse transition-all duration-300">Experience
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="projects.html" onclick="toggleMenu()"
-                                class="text-xl text-gray-300 hover:text-emerald-400 
-                            transition-all flex items-center gap-2
-                            before:text-emerald-400 before:opacity-0 before:transition-all 
-                            hover:before:opacity-100 hover:before:translate-x-2 hover:animate-pulse transition-all duration-300">Projects
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="contact.html" onclick="toggleMenu()"
-                                class="text-xl text-gray-300 hover:text-emerald-400 
-                            transition-all flex items-center gap-2 
-                            before:text-emerald-400 before:opacity-0 before:transition-all 
-                            hover:before:opacity-100 hover:before:translate-x-2 hover:animate-pulse transition-all duration-300">Contact
-                            </a>
-                        </li>
-
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </nav>
-    <section id="profile" class="py-16 px-4 sm:px-8 lg:px-20 bg-gradient-to-b from-black to-gray-900 mt-16">
-        <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12">
-            <!-- الصورة الشخصية -->
-            <div class="section__pic-container relative flex-shrink-0 group">
-                <!-- الإطار المتحرك مع زيادة العرض -->
-                <div class="section__pic-border-container absolute inset-0 rounded-full overflow-hidden animate-rotate-border 
-                        bg-gradient-to-r from-emerald-400 via-cyan-400 to-emerald-400 
-                        opacity-80 group-hover:opacity-100 transition-opacity 
-                        duration-500 -left-[4px] -right-[-14px] -top-[3px] -bottom-[-14px]">
-                    <!-- زيادة عرض الإطار -->
-                    <!--if i want to make the border one line only we need to change the " Rounded from the 2xl to full "-->
-                    <div class="absolute inset-[10px] bg-gray-900 rounded-full"></div>
-
-                    <!--if i want the border with the motion 
-                <div class="absolute inset-[20px] bg-gray-900 rounded-lg">
-                    <div class="absolute inset-0 rounded-full border-2 border-emerald-400/20 group-hover:border-emerald-400/40"></div>
-                </div>-->
-                </div>
-
-                <!-- الصورة الثابتة -->
-                <div class="relative z-50 w-64 h-64 md:w-90 md:h-90 lg:w-96 lg:h-96 
-                        rounded-full overflow-hidden shadow-[0_20px_50px_rgba(4,255,0,0.05)] 
-                        hover:shadow-[0_20px_50px_rgba(4,255,0,0.1)] transition-all duration-500">
-
-                    <img src="./assets/ghazi.png" alt="Ghazi Abdallah profile picture"
-                        class="w-full h-full object-cover items-center">
-                </div>
-            </div>
-
-            <!-- النصوص والأزرار -->
-            <div class="section__text text-center md:text-left space-y-6">
-                <p
-                    class="text-lg md:text-xl bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent font-mono hover:animate-pulse transition-all duration-300">
-                    Software Developer</p>
-                <div class="space-y-2">
-                    <p class="text-2xl md:text-3xl text-gray-300">Hello, I'm</p>
-                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white">
-
-                        <span class="font-bold bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent 
-                    relative inline-block hover:animate-pulse transition-all duration-300">
-                            Ghazi Abdallah
-                        </span>
-                    </h1>
-                </div>
-
-                <div class="bg-from-black to-gray-900 p-8 rounded-2xl border border-emerald-400/20 
-                        hover:border-emerald-400/40 transition-all duration-300">
-                    <p class="text-gray-300 leading-relaxed text-lg md:text-xl font-light ">
-                    <ul>
-                        <li>
-                            <span class="text-gray-400">
-                                As a passionate and dedicated Software Engineering graduate, I am eager to embark on a
-                                career that
-                                offers both fun and
-                                challenging opportunities. I am seeking a dynamic working environment that fosters
-                                continuous learning
-                                and skill
-                                enhancement. My goal is to contribute my best efforts towards the growth and success of
-                                both myself and
-                                the organization
-                                I work for
-                            </span>
-                        </li>
-                    </ul>
-                    </p>
-
-                    <!-- الأزرار والعدادات -->
-                    <div class="flex flex-col sm:flex-row gap-8 items-center gap-6 justify-start mt-12">
-                        <!-- زر السيرة الذاتية -->
-                        <div class="btn-container">
-                            <button class="px-8 py-3 bg-gradient-to-r from-emerald-600 to-cyan-600 hover:bg-emerald-600 text-white 
-                                   rounded-lg transform hover:scale-105 transition-all duration-300 font-semibold shadow-lg 
-                                   shadow-emerald-500/30 hover:animate-pulse transition-all duration-300"
-                                onclick="window.open('./assets/GHAZI ALI ABDULLAH.pdf')">
-                                Download CV
-                            </button>
-
-                            <!-- الأيقونات الاجتماعية -->
-                            <div class="flex gap-8 px-8 py-3">
-                                <a href="https://github.com/Ghazi-Abdullah" target="_blank"
-                                    class="text-gray-400 hover:text-emerald-400 transition-all duration-300 hover:scale-110 hover:animate-pulse transition-all duration-300">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="currentColor"
-                                        viewBox="0 0 24 24" aria-label="GitHub Profile">
-                                        <path
-                                            d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                                    </svg>
-                                </a>
-
-                                <a href="https://www.linkedin.com/in/ghazi-al-rayan-45147723b/" target="_blank"
-                                    class="text-gray-400 hover:text-emerald-400 transition-all duration-300 hover:scale-110 hover:animate-pulse transition-all duration-300">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="currentColor"
-                                        viewBox="0 0 24 24" aria-label="LinkedIn Profile">
-                                        <path
-                                            d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-                                    </svg>
-                                </a>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
-
-
-                <!-- العدادات -->
-                <div id="experience-counter" class="flex flex-coltext-gray-300 leading-relaxed text-lg md:text-xl 
-                                          font-light sm:flex-row gap-8 items-center justify-between px-8 py-3">
-                    <div class="text-center">
-                        <div class="text-4xl md:text-5xl font-bold text-white animate-countup" data-target="2">0</div>
-                        <div class="text-gray-400 text-sm md:text-base mt-1"><a href="experience.html">Years
-                                Experience</a></div>
-                    </div>
-
-                    <div class="text-center">
-                        <div class="text-4xl md:text-5xl font-bold text-white animate-countup" data-target="2">9</div>
-                        <div class="text-gray-400 text-sm md:text-base mt-1"><a href="experience.html">Technologies
-                                Used</a></div>
-                    </div>
-
-                    <div class="text-center">
-                        <div class="text-4xl md:text-5xl font-bold text-white animate-countup" data-target="4">0</div>
-                        <div class="text-gray-400 text-sm md:text-base mt-1"> <a href="projects.html">Projects Done</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- الأزرار -->
-                <!--<div class="btn-container flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-                <button 
-                    class="px-8 py-3 bg-emerald-500 hover:bg-emerald-600 text-white rounded-lg 
-                    transform hover:scale-105 transition-all duration-300 font-semibold
-                    shadow-lg shadow-emerald-500/30"
-                    onclick="window.open('./assets/GHAZI ALI ABDULLAH.pdf')">
-                    Download CV
-                </button>
-            </div>-->
-
-                <!-- بدلاً من أيقونات التواصل -->
-                <!--<div id="experience-counter" class="flex justify-center md:justify-start gap-8 mt-8">
-                <div class="text-center">
-                    <div class="text-5xl font-bold text-emerald-400 animate-countup" data-target="2">0</div>
-                    <div class="text-gray-400 mt-2">Years of<br>Experience</div>
-
-<body class="bg-gray-900 text-white">
+<body class="gradient-bg">
     <!-- Navigation -->
     <nav class="fixed w-full bg-gray-900/95 backdrop-blur-sm z-50 border-b border-primary-transparent md:h-16 h-20">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-full py-4 md:py-0">
                 <!-- Logo -->
-                <a href="#home"
-                    class="text-2xl font-bold text-primary hover:text-primary-light transition-colors mr-8">
+                <a href="#home" class="text-2xl font-bold text-primary hover:text-primary-light transition-colors mr-8">
                     Ghazi Abdullah
                 </a>
 
                 <!-- Desktop Menu -->
                 <div class="hidden md:flex space-x-8">
-                    <a href="#about"
-                        class="text-gray-300 hover:text-primary transition-colors duration-300">About</a>
-                    <a href="#experience"
-                        class="text-gray-300 hover:text-primary transition-colors duration-300">Experience</a>
-                    <a href="#projects"
-                        class="text-gray-300 hover:text-primary transition-colors duration-300">Projects</a>
-                    <a href="#contact"
-                        class="text-gray-300 hover:text-primary transition-colors duration-300">Contact</a>
+                    <a href="#about" class="nav-link text-gray-300 hover:text-primary transition-colors duration-300">About</a>
+                    <a href="#experience" class="nav-link text-gray-300 hover:text-primary transition-colors duration-300">Experience</a>
+                    <a href="#professional" class="nav-link text-gray-300 hover:text-primary transition-colors duration-300">Professional</a>
+                    <a href="#skills" class="nav-link text-gray-300 hover:text-primary transition-colors duration-300">Skills</a>
+                    <a href="#projects" class="nav-link text-gray-300 hover:text-primary transition-colors duration-300">Projects</a>
+                    <a href="#contact" class="nav-link text-gray-300 hover:text-primary transition-colors duration-300">Contact</a>
                 </div>
 
                 <!-- Mobile Menu Button -->
                 <button id="menu-toggle" class="md:hidden text-gray-300 hover:text-primary focus:outline-none">
                     <svg id="menu-icon" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M4 6h16M4 12h16M4 18h16" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                     </svg>
                     <svg id="close-icon" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M6 18L18 6M6 6l12 12" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                     </svg>
                 </button>
             </div>
         </div>
 
         <!-- Mobile Menu -->
-        <div id="mobile-menu"
-            class="md:hidden bg-gray-800/95 backdrop-blur-sm border-b border-primary-transparent hidden shadow-lg">
+        <div id="mobile-menu" class="md:hidden bg-gray-800/95 backdrop-blur-sm border-b border-primary-transparent hidden shadow-lg">
             <div class="px-4 py-2 space-y-0">
-                <a href="#about"
-                    class="block text-gray-300 hover:text-primary hover:bg-gray-700/50 py-3 px-4 transition-colors">About</a>
-                <a href="#experience"
-                    class="block text-gray-300 hover:text-primary hover:bg-gray-700/50 py-3 px-4 transition-colors">Experience</a>
-                <a href="#projects"
-                    class="block text-gray-300 hover:text-primary hover:bg-gray-700/50 py-3 px-4 transition-colors">Projects</a>
-                <a href="#contact"
-                    class="block text-gray-300 hover:text-primary hover:bg-gray-700/50 py-3 px-4 transition-colors">Contact</a>
+                <a href="#about" class="block text-gray-300 hover:text-primary hover:bg-gray-700/50 py-3 px-4 transition-colors">About</a>
+                <a href="#experience" class="block text-gray-300 hover:text-primary hover:bg-gray-700/50 py-3 px-4 transition-colors">Technical Skills</a>
+                <a href="#professional" class="block text-gray-300 hover:text-primary hover:bg-gray-700/50 py-3 px-4 transition-colors">Professional</a>
+                <a href="#skills" class="block text-gray-300 hover:text-primary hover:bg-gray-700/50 py-3 px-4 transition-colors">Skills & Certificates</a>
+                <a href="#projects" class="block text-gray-300 hover:text-primary hover:bg-gray-700/50 py-3 px-4 transition-colors">Projects</a>
+                <a href="#contact" class="block text-gray-300 hover:text-primary hover:bg-gray-700/50 py-3 px-4 transition-colors">Contact</a>
             </div>
         </div>
     </nav>
 
     <!-- Home Section -->
-    <section id="home"
-        class="min-h-screen flex items-center pt-32 pb-20 px-4 sm:px-8 lg:px-20 bg-gradient-to-b from-gray-900 to-gray-800 md:pt-16">
+    <section id="home" class="min-h-screen flex items-center pt-32 pb-20 px-4 sm:px-8 lg:px-20 md:pt-16">
         <div class="max-w-6xl mx-auto w-full">
             <div class="flex flex-col lg:flex-row items-center gap-12">
                 <!-- Profile Image -->
                 <div class="relative flex-shrink-0">
-                    <div
-                        class="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-4 border-primary shadow-2xl shadow-primary">
-                        <img src="./assets/profile-pic.png" alt="Ghazi Abdullah"
-                            class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                    <div class="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-4 border-primary shadow-2xl shadow-primary hover-lift">
+                        <img src="./assets/profile-pic.png" alt="Ghazi Abdullah" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
                     </div>
                     <div class="absolute -top-4 -right-4 w-20 h-20 bg-primary-transparent rounded-full -z-10"></div>
                     <div class="absolute -bottom-6 -left-6 w-32 h-32 bg-primary-transparent rounded-full -z-10" style="opacity: 0.05;"></div>
@@ -396,24 +264,21 @@
 
                 <!-- Text Content -->
                 <div class="text-center lg:text-left space-y-6 flex-1">
-                    <p class="text-lg md:text-xl text-primary font-mono tracking-wider">SOFTWARE DEVELOPER</p>
+                    <p class="text-lg md:text-xl text-primary font-mono tracking-wider bg-primary-transparent inline-block px-4 py-1 rounded-full">SOFTWARE DEVELOPER</p>
                     <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
                         Hello, I'm <br>
-                        <span class="text-primary">Ghazi Abdullah</span>
+                        <span class="text-primary bg-gradient-to-r from-primary to-primary-light bg-clip-text text-transparent">Ghazi Abdullah</span>
                     </h1>
 
-                    <p class="text-gray-300 text-lg md:text-xl max-w-2xl mx-auto lg:mx-0">
-                        Software Engineering graduate experienced in developing robust web applications and delivering
-                        clean, maintainable code with real-world impact. </p>
+                    <p class="text-gray-300 text-lg md:text-xl max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                        Software Engineering graduate experienced in developing robust web applications and delivering clean, maintainable code with real-world impact.
+                    </p>
 
                     <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
-                        <button onclick="window.open('./assets/GHAZI ALI ABDULLAH.pdf')" class="px-8 py-3 bg-primary hover:bg-primary-dark text-white rounded-lg font-semibold 
-                                       transition-all duration-300 transform hover:-translate-y-1 
-                                       shadow-lg hover:shadow-primary-hover">
+                        <button onclick="window.open('./assets/GHAZI ALI ABDULLAH.pdf')" class="btn-primary">
                             Download CV
                         </button>
-                        <button onclick="document.querySelector('#contact').scrollIntoView({behavior: 'smooth'})" class="px-8 py-3 border-2 border-primary text-primary hover:bg-primary-transparent 
-                                       rounded-lg font-semibold transition-all duration-300">
+                        <button onclick="document.querySelector('#contact').scrollIntoView({behavior: 'smooth'})" class="btn-outline">
                             Contact Me
                         </button>
                     </div>
@@ -423,30 +288,25 @@
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-20 px-4 sm:px-8 lg:px-20 bg-gradient-to-b from-gray-800 to-gray-900">
+    <section id="about" class="py-20 px-4 sm:px-8 lg:px-20">
         <div class="max-w-4xl mx-auto">
-            <p class="text-center text-primary mb-4 text-lg font-mono tracking-widest">GET TO KNOW MORE</p>
-            <h2 class="text-center text-4xl md:text-5xl lg:text-6xl font-bold mb-16">About Me</h2>
+            <h2 class="section-title text-center text-4xl md:text-5xl lg:text-6xl font-bold mb-16">About Me</h2>
 
             <div class="space-y-8">
-                <div
-                    class="bg-gray-800/50 p-8 rounded-2xl border border-primary-transparent hover:border-primary-hover transition-all hover:-translate-y-1 duration-300">
+                <div class="card p-8 hover-lift">
                     <div class="flex items-center gap-6 mb-6">
                         <div class="p-3 bg-primary-transparent rounded-lg">
                             <img src="./assets/education.png" alt="Education" class="w-8 h-8">
                         </div>
-                        <h3 class="text-2xl font-bold">Education</h3>
+                        <h3 class="text-2xl font-bold text-primary">Education</h3>
                     </div>
                     <p class="text-primary text-xl font-bold mb-2">AL-ZAYTOONAH UNIVERSITY</p>
                     <p class="text-gray-300">Bachelor's Degree in Software Engineering</p>
                 </div>
 
-                <div
-                    class="bg-gray-800/50 p-8 rounded-2xl border border-primary-transparent hover:border-primary-hover transition-all hover:-translate-y-1 duration-300">
+                <div class="card p-8 hover-lift">
                     <p class="text-gray-300 mb-6 leading-relaxed text-lg">
-                        As a passionate Software Engineering graduate, I thrive on turning complex problems
-                        into elegant solutions through code. I'm dedicated to creating impactful digital
-                        experiences with modern technologies.
+                        As a passionate Software Engineering graduate, I thrive on turning complex problems into elegant solutions through code. I'm dedicated to creating impactful digital experiences with modern technologies.
                     </p>
                     <ul class="space-y-4 text-gray-300">
                         <li class="flex items-start gap-4">
@@ -467,21 +327,18 @@
         </div>
     </section>
 
-    <!-- Experience Section -->
-    <section id="experience" class="py-20 px-4 sm:px-8 lg:px-20 bg-gradient-to-b from-gray-900 to-gray-800">
+    <!-- Technical Skills Section -->
+    <section id="experience" class="py-20 px-4 sm:px-8 lg:px-20">
         <div class="max-w-6xl mx-auto">
-            <p class="text-center text-primary mb-4 text-lg font-mono tracking-widest">EXPLORE MY</p>
-            <h2 class="text-center text-4xl md:text-5xl lg:text-6xl font-bold mb-16">Technical Skills</h2>
+            <h2 class="section-title text-center text-4xl md:text-5xl lg:text-6xl font-bold mb-16">Technical Skills</h2>
 
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
                 <!-- Full-Stack Development -->
-                <div
-                    class="lg:col-span-2 bg-gray-800/50 p-8 rounded-2xl border border-primary-transparent hover:border-primary-hover transition-all hover:-translate-y-1 duration-300">
+                <div class="lg:col-span-2 card p-8 hover-lift">
                     <div class="flex items-center gap-4 mb-8">
                         <div class="p-3 bg-primary-transparent rounded-lg">
                             <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
                             </svg>
                         </div>
                         <div>
@@ -493,74 +350,68 @@
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <!-- Frontend Technologies -->
                         <div>
-                            <h4 class="text-lg font-semibold text-gray-300 mb-4 flex items-center gap-2">
-                                <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            <h4 class="text-lg font-semibold text-primary mb-4 flex items-center gap-2">
+                                <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                                 </svg>
                                 Frontend
                             </h4>
                             <div class="space-y-3">
-                                <div class="flex items-center gap-3 p-3 bg-gray-700/30 rounded-lg">
+                                <div class="flex items-center gap-3 p-3 bg-gray-800/30 rounded-lg hover:bg-gray-800/50 transition-colors">
                                     <div class="w-8 h-8 rounded-lg bg-primary-transparent flex items-center justify-center">
                                         <span class="text-primary font-bold text-sm">V</span>
                                     </div>
-                                    <span class="font-medium">Vue.js & Vuex</span>
+                                    <span class="font-medium text-gray-300">Vue.js & Vuex</span>
                                 </div>
-                                <div class="flex items-center gap-3 p-3 bg-gray-700/30 rounded-lg">
+                                <div class="flex items-center gap-3 p-3 bg-gray-800/30 rounded-lg hover:bg-gray-800/50 transition-colors">
                                     <div class="w-8 h-8 rounded-lg bg-primary-transparent flex items-center justify-center">
                                         <span class="text-primary font-bold text-sm">JS</span>
                                     </div>
-                                    <span class="font-medium">JavaScript</span>
+                                    <span class="font-medium text-gray-300">JavaScript</span>
                                 </div>
-                                <div class="flex items-center gap-3 p-3 bg-gray-700/30 rounded-lg">
+                                <div class="flex items-center gap-3 p-3 bg-gray-800/30 rounded-lg hover:bg-gray-800/50 transition-colors">
                                     <div class="w-8 h-8 rounded-lg bg-primary-transparent flex items-center justify-center">
                                         <span class="text-primary font-bold text-sm">B</span>
                                     </div>
-                                    <span class="font-medium">Bootstrap</span>
+                                    <span class="font-medium text-gray-300">Bootstrap</span>
                                 </div>
-                                <div class="flex items-center gap-3 p-3 bg-gray-700/30 rounded-lg">
+                                <div class="flex items-center gap-3 p-3 bg-gray-800/30 rounded-lg hover:bg-gray-800/50 transition-colors">
                                     <div class="w-8 h-8 rounded-lg bg-primary-transparent flex items-center justify-center">
                                         <span class="text-primary font-bold text-sm">H/C</span>
                                     </div>
-                                    <span class="font-medium">HTML5 & CSS3</span>
+                                    <span class="font-medium text-gray-300">HTML5 & CSS3</span>
                                 </div>
                             </div>
                         </div>
 
                         <!-- Backend Technologies -->
                         <div>
-                            <h4 class="text-lg font-semibold text-gray-300 mb-4 flex items-center gap-2">
-                                <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2" />
+                            <h4 class="text-lg font-semibold text-primary mb-4 flex items-center gap-2">
+                                <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2" />
                                 </svg>
                                 Backend
                             </h4>
                             <div class="space-y-3">
-                                <div class="flex items-center gap-3 p-3 bg-gray-700/30 rounded-lg">
+                                <div class="flex items-center gap-3 p-3 bg-gray-800/30 rounded-lg hover:bg-gray-800/50 transition-colors">
                                     <div class="w-8 h-8 rounded-lg bg-primary-transparent flex items-center justify-center">
                                         <span class="text-primary font-bold text-sm">.NET</span>
                                     </div>
-                                    <span class="font-medium">ASP.NET Core & MVC</span>
+                                    <span class="font-medium text-gray-300">ASP.NET Core & MVC</span>
                                 </div>
-                                <div class="flex items-center gap-3 p-3 bg-gray-700/30 rounded-lg">
+                                <div class="flex items-center gap-3 p-3 bg-gray-800/30 rounded-lg hover:bg-gray-800/50 transition-colors">
                                     <div class="w-8 h-8 rounded-lg bg-primary-transparent flex items-center justify-center">
                                         <span class="text-primary font-bold text-sm">P</span>
                                     </div>
-                                    <span class="font-medium">PHP & Laravel</span>
+                                    <span class="font-medium text-gray-300">PHP & Laravel</span>
                                 </div>
-                                <div class="flex items-center gap-3 p-3 bg-gray-700/30 rounded-lg">
+                                <div class="flex items-center gap-3 p-3 bg-gray-800/30 rounded-lg hover:bg-gray-800/50 transition-colors">
                                     <div class="w-8 h-8 rounded-lg bg-primary-transparent flex items-center justify-center">
                                         <svg class="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 20 20">
-                                            <path fill-rule="evenodd"
-                                                d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
-                                                clip-rule="evenodd" />
+                                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
                                         </svg>
                                     </div>
-                                    <span class="font-medium">RESTful APIs</span>
+                                    <span class="font-medium text-gray-300">RESTful APIs</span>
                                 </div>
                             </div>
                         </div>
@@ -568,13 +419,11 @@
                 </div>
 
                 <!-- Databases & SQL -->
-                <div
-                    class="bg-gray-800/50 p-8 rounded-2xl border border-primary-transparent hover:border-primary-hover transition-all hover:-translate-y-1 duration-300">
+                <div class="card p-8 hover-lift">
                     <div class="flex items-center gap-4 mb-8">
                         <div class="p-3 bg-primary-transparent rounded-lg">
                             <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4" />
                             </svg>
                         </div>
                         <div>
@@ -584,25 +433,20 @@
                     </div>
 
                     <div class="space-y-4">
-                        <div class="p-4 bg-gray-700/30 rounded-lg">
+                        <div class="p-4 bg-gray-800/30 rounded-lg hover:bg-gray-800/50 transition-colors">
                             <div class="flex items-center gap-3 mb-3">
                                 <div class="w-10 h-10 rounded-lg bg-primary-transparent flex items-center justify-center">
                                     <span class="text-primary font-bold">SQL</span>
                                 </div>
                                 <div>
-                                    <span class="font-medium block">SQL Server & MySQL</span>
+                                    <span class="font-medium block text-gray-300">SQL Server & MySQL</span>
                                     <span class="text-gray-400 text-xs">Database Management</span>
                                 </div>
                             </div>
                             <div class="flex flex-wrap gap-2 mt-2">
                                 <span class="px-2 py-1 bg-primary-transparent text-primary text-xs rounded">CRUD</span>
                                 <span class="px-2 py-1 bg-primary-transparent text-primary text-xs rounded">T-SQL</span>
-                                <span class="px-2 py-1 bg-primary-transparent text-primary text-xs rounded">Stored
-                                    Procedures</span>
-                                <span
-                                    class="px-2 py-1 bg-primary-transparent text-primary text-xs rounded">Triggers</span>
-                                <span class="px-2 py-1 bg-primary-transparent text-primary text-xs rounded">Joins</span>
-                                <span class="px-2 py-1 bg-primary-transparent text-primary text-xs rounded">Views</span>
+                                <span class="px-2 py-1 bg-primary-transparent text-primary text-xs rounded">Stored Procedures</span>
                             </div>
                         </div>
                     </div>
@@ -612,34 +456,29 @@
             <!-- Development Tools & Infrastructure -->
             <div class="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-8">
                 <!-- Development Tools -->
-                <div
-                    class="bg-gray-800/50 p-8 rounded-2xl border border-primary-transparent hover:border-primary-hover transition-all hover:-translate-y-1 duration-300">
+                <div class="card p-8 hover-lift">
                     <div class="flex items-center gap-4 mb-6">
                         <div class="p-3 bg-primary-transparent rounded-lg">
                             <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
                             </svg>
                         </div>
                         <h3 class="text-2xl font-bold text-primary">Development Tools</h3>
                     </div>
 
                     <div class="grid grid-cols-2 gap-4">
-                        <div class="p-4 bg-gray-700/30 rounded-lg text-center hover:bg-gray-700/50 transition-all">
-                            <div
-                                class="w-12 h-12 mx-auto mb-3 rounded-lg bg-primary-transparent flex items-center justify-center">
+                        <div class="p-4 bg-gray-800/30 rounded-lg text-center hover:bg-gray-800/50 transition-all">
+                            <div class="w-12 h-12 mx-auto mb-3 rounded-lg bg-primary-transparent flex items-center justify-center">
                                 <svg class="w-6 h-6 text-primary" fill="currentColor" viewBox="0 0 24 24">
-                                    <path
-                                        d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
                                 </svg>
                             </div>
                             <div class="text-primary font-bold mb-1">Git & GitHub</div>
                             <div class="text-gray-400 text-sm">Version Control & Collaboration</div>
                         </div>
 
-                        <div class="p-4 bg-gray-700/30 rounded-lg text-center hover:bg-gray-700/50 transition-all">
-                            <div
-                                class="w-12 h-12 mx-auto mb-3 rounded-lg bg-primary-transparent flex items-center justify-center">
+                        <div class="p-4 bg-gray-800/30 rounded-lg text-center hover:bg-gray-800/50 transition-all">
+                            <div class="w-12 h-12 mx-auto mb-3 rounded-lg bg-primary-transparent flex items-center justify-center">
                                 <span class="text-primary font-bold text-xl">AWS</span>
                             </div>
                             <div class="text-primary font-bold mb-1">AWS</div>
@@ -649,39 +488,36 @@
                 </div>
 
                 <!-- Problem Solving -->
-                <div
-                    class="bg-gray-800/50 p-8 rounded-2xl border border-primary-transparent hover:border-primary-hover transition-all hover:-translate-y-1 duration-300">
+                <div class="card p-8 hover-lift">
                     <div class="flex items-center gap-4 mb-6">
                         <div class="p-3 bg-primary-transparent rounded-lg">
                             <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                             </svg>
                         </div>
                         <h3 class="text-2xl font-bold text-primary">Problem Solving & Support</h3>
                     </div>
 
                     <div class="space-y-4">
-                        <div class="p-4 bg-gray-700/30 rounded-lg">
+                        <div class="p-4 bg-gray-800/30 rounded-lg hover:bg-gray-800/50 transition-colors">
                             <h4 class="font-medium text-primary mb-2">Technical Troubleshooting</h4>
-                            <p class="text-gray-400 text-sm">Expertise in debugging complex issues and providing
-                                technical solutions</p>
+                            <p class="text-gray-400 text-sm">Expertise in debugging complex issues and providing technical solutions</p>
                         </div>
 
                         <div class="grid grid-cols-2 gap-3">
-                            <div class="p-3 bg-gray-700/30 rounded-lg text-center">
+                            <div class="p-3 bg-gray-800/30 rounded-lg text-center hover:bg-gray-800/50 transition-colors">
                                 <div class="text-primary font-medium text-sm">Active Directory</div>
                                 <div class="text-gray-400 text-xs">User Management</div>
                             </div>
-                            <div class="p-3 bg-gray-700/30 rounded-lg text-center">
+                            <div class="p-3 bg-gray-800/30 rounded-lg text-center hover:bg-gray-800/50 transition-colors">
                                 <div class="text-primary font-medium text-sm">IT Support</div>
                                 <div class="text-gray-400 text-xs">Technical Assistance</div>
                             </div>
-                            <div class="p-3 bg-gray-700/30 rounded-lg text-center">
+                            <div class="p-3 bg-gray-800/30 rounded-lg text-center hover:bg-gray-800/50 transition-colors">
                                 <div class="text-primary font-medium text-sm">IP Phones</div>
                                 <div class="text-gray-400 text-xs">Configuration</div>
                             </div>
-                            <div class="p-3 bg-gray-700/30 rounded-lg text-center">
+                            <div class="p-3 bg-gray-800/30 rounded-lg text-center hover:bg-gray-800/50 transition-colors">
                                 <div class="text-primary font-medium text-sm">CCTV</div>
                                 <div class="text-gray-400 text-xs">Security Systems</div>
                             </div>
@@ -692,104 +528,140 @@
         </div>
     </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="py-20 px-4 sm:px-8 lg:px-20 bg-gradient-to-b from-gray-800 to-gray-900">
+    <!-- Skills & Certificates Section -->
+    <section id="skills" class="py-20 px-4 sm:px-8 lg:px-20">
         <div class="max-w-6xl mx-auto">
-            <p class="text-center text-primary mb-4 text-lg font-mono tracking-widest">BROWSE MY RECENT</p>
-            <h2 class="text-center text-4xl md:text-5xl lg:text-6xl font-bold mb-16">Projects</h2>
+            <h2 class="section-title text-center text-4xl md:text-5xl lg:text-6xl font-bold mb-16">Skills & Certificates</h2>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Soft Skills -->
+                <div class="card p-8 hover-lift">
+                    <h3 class="text-2xl font-bold mb-6 text-primary">Soft Skills</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="flex items-center gap-3 p-3 bg-gray-800/30 rounded-lg hover:bg-gray-800/50 transition-colors">
+                            <span class="text-primary">✓</span>
+                            <span class="font-medium text-gray-300">Quick Learner</span>
+                        </div>
+                        <div class="flex items-center gap-3 p-3 bg-gray-800/30 rounded-lg hover:bg-gray-800/50 transition-colors">
+                            <span class="text-primary">✓</span>
+                            <span class="font-medium text-gray-300">Impeccable Organizational Skills</span>
+                        </div>
+                        <div class="flex items-center gap-3 p-3 bg-gray-800/30 rounded-lg hover:bg-gray-800/50 transition-colors">
+                            <span class="text-primary">✓</span>
+                            <span class="font-medium text-gray-300">Time Management</span>
+                        </div>
+                        <div class="flex items-center gap-3 p-3 bg-gray-800/30 rounded-lg hover:bg-gray-800/50 transition-colors">
+                            <span class="text-primary">✓</span>
+                            <span class="font-medium text-gray-300">Self-Motivated</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Certificates -->
+                <div class="lg:col-span-2 card p-8 hover-lift">
+                    <h3 class="text-2xl font-bold mb-6 text-primary">Certificates</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <div class="bg-gray-800/30 p-4 rounded-xl text-center hover:bg-gray-800/50 transition-all hover-lift">
+                            <div class="text-3xl mb-3 text-primary">🎓</div>
+                            <h4 class="text-lg font-bold text-primary mb-1">ASP.NET MVC</h4>
+                            <p class="text-gray-400 text-sm">Training Pioneer Academy</p>
+                            <p class="text-primary text-xs mt-2">2020</p>
+                        </div>
+                        <div class="bg-gray-800/30 p-4 rounded-xl text-center hover:bg-gray-800/50 transition-all hover-lift">
+                            <div class="text-3xl mb-3 text-primary">🎓</div>
+                            <h4 class="text-lg font-bold text-primary mb-1">Laravel</h4>
+                            <p class="text-gray-400 text-sm">Udemy Training</p>
+                            <p class="text-primary text-xs mt-2">2025</p>
+                        </div>
+                        <div class="bg-gray-800/30 p-4 rounded-xl text-center hover:bg-gray-800/50 transition-all hover-lift">
+                            <div class="text-3xl mb-3 text-primary">🎓</div>
+                            <h4 class="text-lg font-bold text-primary mb-1">Vue.js</h4>
+                            <p class="text-gray-400 text-sm">Udemy Training</p>
+                            <p class="text-primary text-xs mt-2">2024</p>
+                        </div>
+                        <div class="bg-gray-800/30 p-4 rounded-xl text-center hover:bg-gray-800/50 transition-all hover-lift">
+                            <div class="text-3xl mb-3 text-primary">🎓</div>
+                            <h4 class="text-lg font-bold text-primary mb-1">PHP</h4>
+                            <p class="text-gray-400 text-sm">Udemy Training</p>
+                            <p class="text-primary text-xs mt-2">2025</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 px-4 sm:px-8 lg:px-20">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="section-title text-center text-4xl md:text-5xl lg:text-6xl font-bold mb-16">Projects</h2>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Project 1 -->
-                <div
-                    class="group bg-gray-800/50 rounded-2xl border border-primary-transparent hover:border-primary-hover overflow-hidden transition-all duration-300 hover:-translate-y-2">
+                <div class="card overflow-hidden group hover-lift">
                     <div class="h-48 overflow-hidden">
-                        <img src="./assets/Villa.png" alt="Villa Project"
-                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        <img src="./assets/Villa.png" alt="Villa Project" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">Villa Management API</h3>
-                        <p class="text-gray-300 mb-4 text-sm">Villa management API with full CRUD support.</p>
-                        <button onclick="window.open('https://github.com/Ghazi-Abdullah')"
-                            class="w-full py-2 border border-primary text-primary rounded-lg hover:bg-primary-transparent transition-all duration-300">
+                        <h3 class="text-xl font-bold mb-2 text-gray-300">Villa Management API</h3>
+                        <p class="text-gray-400 mb-4 text-sm">Villa management API with full CRUD support.</p>
+                        <button onclick="window.open('https://github.com/Ghazi-Abdullah')" class="w-full py-2 border border-primary text-primary rounded-lg hover:bg-primary-transparent transition-all duration-300">
                             View on GitHub
                         </button>
                     </div>
                 </div>
 
                 <!-- Project 2 -->
-                <div
-                    class="group bg-gray-800/50 rounded-2xl border border-primary-transparent hover:border-primary-hover overflow-hidden transition-all duration-300 hover:-translate-y-2">
+                <div class="card overflow-hidden group hover-lift">
                     <div class="h-48 overflow-hidden">
-                        <img src="./assets/API.png" alt="API Project"
-                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        <img src="./assets/API.png" alt="API Project" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">Open Project API</h3>
-                        <p class="text-gray-300 mb-4 text-sm">RESTful API implementation with authentication and
-                            documentation</p>
-                        <button onclick="window.open('https://github.com/Ghazi-Abdullah')"
-                            class="w-full py-2 border border-primary text-primary rounded-lg hover:bg-primary-transparent transition-all duration-300">
+                        <h3 class="text-xl font-bold mb-2 text-gray-300">Open Project API</h3>
+                        <p class="text-gray-400 mb-4 text-sm">RESTful API implementation with authentication and documentation</p>
+                        <button onclick="window.open('https://github.com/Ghazi-Abdullah')" class="w-full py-2 border border-primary text-primary rounded-lg hover:bg-primary-transparent transition-all duration-300">
                             View on GitHub
                         </button>
                     </div>
                 </div>
-            </div>-->
-
-                <!-- أيقونات التواصل -->
-                <!-- <div id="socials-container" class="flex justify-center md:justify-start gap-6 mt-4">
-                <a href="https://github.com/Ghazi-Abdullah" target="_blank" 
-                    class="text-gray-400 hover:text-emerald-400 transition-colors duration-300">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                    </svg>
 
                 <!-- Project 3 -->
-                <div
-                    class="group bg-gray-800/50 rounded-2xl border border-primary-transparent hover:border-primary-hover overflow-hidden transition-all duration-300 hover:-translate-y-2">
+                <div class="card overflow-hidden group hover-lift">
                     <div class="h-48 overflow-hidden">
-                        <img src="./assets/Bulky.png" alt="E-commerce Project"
-                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        <img src="./assets/Bulky.png" alt="E-commerce Project" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">E-commerce Platform</h3>
-                        <p class="text-gray-300 mb-4 text-sm">Full online store solution with payment integration</p>
-                        <button onclick="window.open('https://github.com/Ghazi-Abdullah')"
-                            class="w-full py-2 border border-primary text-primary rounded-lg hover:bg-primary-transparent transition-all duration-300">
+                        <h3 class="text-xl font-bold mb-2 text-gray-300">E-commerce Platform</h3>
+                        <p class="text-gray-400 mb-4 text-sm">Full online store solution with payment integration</p>
+                        <button onclick="window.open('https://github.com/Ghazi-Abdullah')" class="w-full py-2 border border-primary text-primary rounded-lg hover:bg-primary-transparent transition-all duration-300">
                             View on GitHub
                         </button>
                     </div>
                 </div>
 
                 <!-- Project 4 -->
-                <div
-                    class="group bg-gray-800/50 rounded-2xl border border-primary-transparent hover:border-primary-hover overflow-hidden transition-all duration-300 hover:-translate-y-2">
+                <div class="card overflow-hidden group hover-lift">
                     <div class="h-48 overflow-hidden">
-                        <img src="./assets/Hotel.png" alt="Villa Project"
-                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        <img src="./assets/Hotel.png" alt="Villa Project" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">Hotel Booking Web</h3>
-                        <p class="text-gray-300 mb-4 text-sm">Comprehensive web page for managing hotel bookings.</p>
-                        <button onclick="window.open('https://ghazi-abdullah.github.io/Hotil---project-Bootstrap/')"
-                            class="w-full py-2 border border-primary text-primary rounded-lg hover:bg-primary-transparent transition-all duration-300">
+                        <h3 class="text-xl font-bold mb-2 text-gray-300">Hotel Booking Web</h3>
+                        <p class="text-gray-400 mb-4 text-sm">Comprehensive web page for managing hotel bookings.</p>
+                        <button onclick="window.open('https://ghazi-abdullah.github.io/Hotil---project-Bootstrap/')" class="w-full py-2 border border-primary text-primary rounded-lg hover:bg-primary-transparent transition-all duration-300">
                             View on GitHub
                         </button>
                     </div>
                 </div>
 
                 <!-- Project 5 -->
-                <div
-                    class="group bg-gray-800/50 rounded-2xl border border-primary-transparent hover:border-primary-hover overflow-hidden transition-all duration-300 hover:-translate-y-2">
+                <div class="card overflow-hidden group hover-lift">
                     <div class="h-48 overflow-hidden">
-                        <img src="./assets/Real-Estate.png" alt="Villa Project"
-                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        <img src="./assets/Real-Estate-Web.png" alt="Villa Project" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">Real-Estate</h3>
-                        <p class="text-gray-300 mb-4 text-sm">Real-Estate web page for property listings and bookings.
-                        </p>
-                        <button onclick="window.open('https://ghazi-abdullah.github.io/Real-Estate-Web/')"
-                            class="w-full py-2 border border-primary text-primary rounded-lg hover:bg-primary-transparent transition-all duration-300">
+                        <h3 class="text-xl font-bold mb-2 text-gray-300">Real-Estate</h3>
+                        <p class="text-gray-400 mb-4 text-sm">Real-Estate web page for property listings and bookings.</p>
+                        <button onclick="window.open('https://ghazi-abdullah.github.io/Real-Estate-Web/')" class="w-full py-2 border border-primary text-primary rounded-lg hover:bg-primary-transparent transition-all duration-300">
                             View on GitHub
                         </button>
                     </div>
@@ -801,46 +673,26 @@
     <!-- Contact Section -->
     <section id="contact" class="py-20 px-4 sm:px-8 lg:px-20">
         <div class="max-w-4xl mx-auto">
-            <p class="text-center text-primary mb-4 text-lg font-mono tracking-widest">LET'S CONNECT</p>
-            <h2 class="text-center text-4xl md:text-5xl lg:text-6xl font-bold mb-16">Contact Me</h2>
+            <h2 class="section-title text-center text-4xl md:text-5xl lg:text-6xl font-bold mb-16">Contact Me</h2>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <!-- Email -->
-                <a href="mailto:ghaziali.rayan@gmail.com"
-                    class="group bg-gray-800/50 p-8 rounded-2xl border border-primary-transparent hover:border-primary transition-all duration-300 text-center hover:-translate-y-2">
-                    <div
-                        class="w-16 h-16 mx-auto mb-6 bg-primary-transparent rounded-full flex items-center justify-center group-hover:bg-primary-transparent transition-all">
+                <a href="mailto:ghaziali.rayan@gmail.com" class="card p-8 text-center hover-lift group">
+                    <div class="w-16 h-16 mx-auto mb-6 bg-primary-transparent rounded-full flex items-center justify-center group-hover:bg-primary-transparent transition-all">
                         <img src="./assets/email.png" alt="Email" class="w-8 h-8">
                     </div>
                     <p class="text-gray-400 mb-2">Let's talk via email</p>
-                    <p class="text-primary font-bold text-lg">ghaziali.rayan@gmail.com</p>
+                    <p class="text-primary font-bold text-lg group-hover:text-primary-light transition-colors">ghaziali.rayan@gmail.com</p>
                 </a>
 
                 <!-- LinkedIn -->
-                <a href="https://www.linkedin.com/in/ghazi-al-rayan-45147723b/" target="_blank"
-                    class="group bg-gray-800/50 p-8 rounded-2xl border border-primary-transparent hover:border-primary transition-all duration-300 text-center hover:-translate-y-2">
-                    <div
-                        class="w-16 h-16 mx-auto mb-6 bg-primary-transparent rounded-full flex items-center justify-center group-hover:bg-primary-transparent transition-all">
+                <a href="https://www.linkedin.com/in/ghazi-al-rayan-45147723b/" target="_blank" class="card p-8 text-center hover-lift group">
+                    <div class="w-16 h-16 mx-auto mb-6 bg-primary-transparent rounded-full flex items-center justify-center group-hover:bg-primary-transparent transition-all">
                         <img src="./assets/linkedin.png" alt="LinkedIn" class="w-8 h-8">
                     </div>
                     <p class="text-gray-400 mb-2">Connect professionally</p>
-                    <p class="text-primary font-bold text-lg">Ghazi Al-Rayan</p>
+                    <p class="text-primary font-bold text-lg group-hover:text-primary-light transition-colors">Ghazi Al-Rayan</p>
                 </a>
-            </div>-->
-            </div>
-        </div>
-
-
-    </section>
-    <!-- <footer class="bg-gray-900 text-gray-300">
-    <nav>
-        <div class="nav-links-container">
-            <ul class="nav-links">
-                <li><a href="about.html">About</a></li>
-                <li><a href="experience.html">Experience</a></li>
-                <li><a href="projects.html">Projects</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
             </div>
 
             <p class="text-center text-gray-400 mt-12 text-lg">
@@ -849,31 +701,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <!--<footer class="bg-gray-900 py-8 px-4 border-t border-gray-800">
-        <div class="max-w-6xl mx-auto text-center">
-            <div class="flex justify-center gap-6 mb-6">
-                <a href="https://github.com/Ghazi-Abdullah" target="_blank"
-                    class="text-gray-400 hover:text-primary transition-all duration-300 hover:scale-110">
-                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-                        <path
-                            d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                    </svg>
-                </a>
-                <a href="https://www.linkedin.com/in/ghazi-al-rayan-45147723b/" target="_blank"
-                    class="text-gray-400 hover:text-primary transition-all duration-300 hover:scale-110">
-                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-                        <path
-                            d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-                    </svg>
-                </a>
-            </div>
-            <p class="text-gray-400">Copyright © 2024 Ghazi Abdullah. All Rights Reserved</p>
-        </div>
-    </footer>-->
-
-
-    <script src="script.js"></script>
     <script>
         // Mobile Menu Toggle
         const menuToggle = document.getElementById('menu-toggle');
@@ -936,7 +763,25 @@
         // Adjust on load and resize
         window.addEventListener('load', adjustHomeSectionPadding);
         window.addEventListener('resize', adjustHomeSectionPadding);
+        
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fade-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observe sections for animation
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
     </script>
 </body>
-
 </html>
