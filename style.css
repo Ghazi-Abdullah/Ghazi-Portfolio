@@ -1,512 +1,376 @@
-/*GENERAL*/
-
-*{
-    box-sizing: border-box;
+/* Reset & Base */
+* {
     margin: 0;
     padding: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    text-decoration: none;
+    box-sizing: border-box;
 }
 
-body{
-    overflow-x:hidden;
-    /*background: #222;*/
-}
-
-.date_time{
-    width: 50px;
-    height: 50px;
-    background:white;
-}
-
-html{
+html {
     scroll-behavior: smooth;
 }
-p{
-    color: rgb(85, 85, 85);
+
+body {
+    overflow-x: hidden;
+    background: #111827;
 }
 
-/*TRANSTION*/
-a, .btn{
-    transition: all 300ms ease;
+/* Navigation Fixes */
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
 }
 
-/* DESKTOP NAV*/
-
-nav, .nav-links{
-    display: flex;
-}
-
-nav{
-    justify-content: space-around;
-    align-items: center;
-    height: 17vh;
-}
-
-.nav-links{
-    gap: 2rem;
-    list-style: none;
-    font-size: 1.5rem;
-}
-
-a{
-    color: black;
-    text-decoration: none;
-    text-decoration-color: white;
-}
-
-a:hover{
-    color: gray;
-    text-decoration: underline;
-    text-underline-offset:1rem;
-    text-decoration-color: rgb(181, 181, 181);
-}
-
-.logo{
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 2rem;
-}
-
-.logo:hover{
-    cursor: pointer;
-}
-
-/*hamburger*/
-
-#hamburger-nav{
-    display: none;
-}
-
-.hamburger-menu{
-    position: relative;
-    display: inline-block;
-}
-
-.hamburger-icon{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 24px;
-    width: 30px;
-    cursor: pointer;
-}
-
-.hamburger-icon span{
-    width: 100%;
-    height: 2px;
-    background-color: rgb(255, 255, 255);
-    transition: all 0.3 ease-in-out;
-}
-.menu-links.open {
-    transform: scaleY(1);
-    opacity: 1;
-}
-
-.menu-links{
+/* Mobile Menu Fix */
+#mobile-menu {
     position: absolute;
     top: 100%;
+    left: 0;
     right: 0;
-    background-color: rgb(from color r g b);
-    width:fit-content;
-    max-height: 0;
-    overflow: hidden;
-    transition: all 0.3 ease-in-out;
-    border-radius: 10px;
-    transform: scaleY(0);
-    opacity: 0;
-    transform-origin: top;
+    z-index: 40;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
-
-.menu-links a{
-    display: block;
-    padding: 10px;
-    text-align: center;
-    font-size: 1.5rem;
-    color: white;
-    text-decoration: none;
-    transition: all 0.3 ease-in-out;
+/* Adjust section padding for fixed navbar */
+section {
+    scroll-margin-top: 80px;
 }
 
-.menu-links li{
-    list-style: none;
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 8px;
 }
 
-.menu-links.open{
-    max-height: 300px;
+::-webkit-scrollbar-track {
+    background: #1f2937;
 }
 
-.hamburger-icon.open span:first-child{
-    transform: rotate(45deg) translate(10px, 5px);
+::-webkit-scrollbar-thumb {
+    background: hsl(25, 89%, 53%);
+    border-radius: 4px;
 }
 
-.hamburger-icon.open span:nth-child(2){
-opacity: 0;
+::-webkit-scrollbar-thumb:hover {
+    background: hsl(25, 89%, 43%);
 }
 
-.hamburger-icon.open span:last-child{
-    transform: rotate(-45deg) translate(10px, -5px);
-}
-
-.hamburger-icon span :first-child{
-    transform: none;
-}
-
-.hamburger-icon span :first-child{
-opacity: 1;
-}
-
-.hamburger-icon span :first-child{
-    transform: none;
-}
-
-/*SECTIONS*/
-section{
-    padding-top:4vh;
-    height: 96vh;
-    margin: 0 10rem;
-    box-sizing:border-box;
-    min-height:fit-content;
-}
-
-.section-container{
-    display: flex;
+/* تحسينات للهاتف */
+@media (max-width: 768px) {
+    section {
+        scroll-margin-top: 80px;
+    }
     
-}
-
-/*PROFILE SECTION*/
-#profile{
-    display:flex;
-    justify-content:center;
-    gap:5rem;
-    height:80vh;
-}
-.section__pic-container{
-    display: flex;
-    height: 400px;
-    width: 400px;
-    margin: auto 0;
-}
-
-.section__text {
-    align-self: center;
-    text-align: center;
-}
-
-.section__text p{
-    font-weight: 600;
-}
-
-.section__text__p1{
-    font-size: 3rem;
-    text-align: center;
-}
-
-.section__text__p2{
-    font-size: 1.50rem;
-    margin-bottom: 1rem;
-}
-
-.title{
-    font-size: 3rem;
-    text-align: center;
-}
-
-#socials-container{
-    display:flex;
-    justify-content: center;
-    margin-top: -2.5rem;
-    gap: 1rem;
-}
-
-/*ICON*/
-.icon{
-    cursor: pointer;
-    height: 2rem;
-}
-
-/*BUTTONS*/
-.btn-container{
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-}
-
-.btn {
-    font-weight:600;
-    transition: all 300ms ease;
-    padding: 1rem;
-    border-radius: 2rem;
-    margin-top: 0.5rem;
-}
-
-.btn-color-1,
-.btn-color-2{
-    border: rgb(53, 53, 53) 0.1rem solid;
-}
-
-.btn-color-1:hover,
-.btn-color-2:hover{
-    cursor: pointer;
-}
-
-.btn-color-1,
-.btn-color-2:hover{
-background: rgb(53, 53, 53);
-color: white;
-}
-
-.btn-color-1:hover{
-    background:rgb(0, 0, 0);
-}
-
-.btn-color-2{
-    background:none;
-}
-
-.btn-color-2:hover{
-    border:rgb(255, 255, 255) 0.1rem solid;
-}
-
-.btn-container{
-    gap:1rem
-}
-
-/*ABOUT SECTION */
-
-#about{
-    position:relative;
-}
-
-.about-containers{
-    gap:2rem;
-    margin-bottom:2rem;
-    margin-top:2rem;
-}
-
-.about-details-container{
-    justify-content:center;
-    flex-direction:column;
-}
-
-.about-containers, 
-.about-details-container{
-    display:flex;
-}
-
-.about-pic{
-    border-radius:2rem;
-}
-
-.arrow{
-    position:absolute;
-    right:-5rem;
-    bottom:2.5rem;
-}
-
-.details-container{
-    padding:1.5rem;
-    flex:1;
-    background:white;
-    border-radius:2rem;
-    border:rgb(53, 53, 53) 0.1rem solid;
-    border-color:rgb(163, 163, 163);
-    text-align:center;
-}
-
-.section-container{
-    gap:2rem;
-    height:80%;
-}
-
-.section__pic-container{
-    height:400px;
-    width:400px;
-    margin:auto 0;
-}
-
-
-/*EXPERIENCE SECTION*/
-#experience{
-    position:relative;
-}
-
-.experience-sub-title{
-    color:rgb(85, 85, 85);
-    font-weight:600;
-    font-size:1.75rem;
-    margin-bottom:2rem;
-}
-.experience-details-container{
-    display:flex;
-    justify-content:center;
-    flex-direction:column;
-}
-
-.article-container{
-    display:flex;
-    text-align:initial;
-    flex-wrap:wrap;
-    flex-direction:row;
-    gap:2.5rem;
-    justify-content:space-around;
-}
-
-article{
-    display:flex;
-    width:10rem;
-    justify-content:space-around;
-    gap:0.5rem;
-}
-
-article .icon{
-    cursor:default;
-}
-
-/*Projects*/
-#projects{
-    position:relative;
-}
-
-.color-container{
-    border-color:rgb(163, 163, 163);
-    background:rgb(250, 250, 250);
-}
-
-.project-img{
-    border-radius:2rem;
-    width:90%;
-    height:90%;
-}
-
-.Project-title{
-    margin:1rem;
-    color:black;
-}
-
-.project-btn{
-    color:black;
-    border-color:rgb(163, 163, 163);
-}
-
-
-/*contact*/
-
-#contact{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    height: 70vh;
-}
-
-.contact-info-upper-container{
-    display: flex;
-    justify-content: center;
-    border-radius: 2rem;
-    border: rgb(53, 53, 53) 0.1rem solid;
-    border-color: rgb(163, 163, 163);
-    background: (250,250,250);
-    margin: 2rem auto;
-    padding: 0.5rem;
-}
-
-.contact-info-container{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap: 0.5rem;
-    margin: 1rem;
-}
-
-.contact-info-container p{
-    font-size: larger;
-}
-
-.contact-icon{
-    cursor: default;
-}
-
-.email-icon{
-    height: 2.5rem;
-}
-
-/*Footer*/
-footer{
-    height:26vh;
-    margin: 0 1rem;
-}
-
-footer p{
-    text-align: center;
-}
-
-
-@keyframes progress-glow {
-    0% {
-        opacity: 0.7;
+    /* تحسين حجم الصورة على الهاتف */
+    .rounded-full {
+        width: 240px !important;
+        height: 240px !important;
     }
-
-    50% {
-        opacity: 1;
+    
+    /* تحسين حجم النصوص على الهاتف */
+    h1 {
+        font-size: 2.5rem !important;
+        line-height: 1.2 !important;
     }
-
-    100% {
-        opacity: 0.7;
+    
+    h2 {
+        font-size: 2rem !important;
+    }
+    
+    .text-lg {
+        font-size: 1rem !important;
+    }
+    
+    /* تحسين المسافات */
+    .py-20 {
+        padding-top: 3rem !important;
+        padding-bottom: 3rem !important;
+    }
+    
+    .px-4 {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
+    
+    .gap-12 {
+        gap: 2rem !important;
+    }
+    
+    /* تحسين المشاريع على الهاتف */
+    .h-48 {
+        height: 180px !important;
+    }
+    
+    /* تحسين الأزرار على الهاتف */
+    button {
+        min-height: 44px;
+        padding: 0.75rem 1.5rem !important;
+    }
+    
+    /* تحسين الـ navigation على الموبايل */
+    nav {
+        height: 5rem !important;
     }
 }
 
-@keyframes fade-in {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
+/* تحسينات للأجهزة اللوحية */
+@media (min-width: 769px) and (max-width: 1024px) {
+    section {
+        scroll-margin-top: 64px;
     }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.animate-progress-glow {
-    animation: progress-glow 2s ease-in-out infinite;
-}
-
-.animate-fade-in {
-    animation: fade-in 1s ease-out;
-}
-
-
-@keyframes rotate-border {
-    from {
-        transform: rotate(0deg);
-    }
-
-    to {
-        transform: rotate(360deg);
+    
+    .rounded-full {
+        width: 280px !important;
+        height: 280px !important;
     }
 }
 
-.animate-rotate-border {
-    animation: rotate-border 3s linear infinite;
-    -webkit-animation: rotate-border 3s linear infinite;
+/* تحسين الصور */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
 }
 
-@keyframes countup {
-    from {
-        transform: translateY(20px);
-        opacity: 0;
+/* تحسينات للأداء */
+section {
+    will-change: transform;
+}
+
+/* الهواتف الصغيرة (أقل من 375px) */
+@media (max-width: 374px) {
+    #home {
+        padding-top: 5rem !important;
+        padding-bottom: 2rem !important;
     }
-
-    to {
-        transform: translateY(0);
-        opacity: 1;
+    
+    .rounded-full {
+        width: 180px !important;
+        height: 180px !important;
+    }
+    
+    h1 {
+        font-size: 2rem !important;
+    }
+    
+    h2 {
+        font-size: 1.75rem !important;
+    }
+    
+    .px-4 {
+        padding-left: 0.75rem !important;
+        padding-right: 0.75rem !important;
+    }
+    
+    button {
+        width: 100%;
+        max-width: 280px;
+        margin: 0 auto;
     }
 }
 
-.animate-countup {
-    animation: countup 1s ease-out forwards;
+/* الهواتف المتوسطة (375px - 424px) */
+@media (min-width: 375px) and (max-width: 424px) {
+    #home {
+        padding-top: 5.5rem !important;
+    }
+    
+    .rounded-full {
+        width: 200px !important;
+        height: 200px !important;
+    }
+    
+    h1 {
+        font-size: 2.25rem !important;
+    }
 }
 
+/* الهواتف الكبيرة (425px - 767px) */
+@media (min-width: 425px) and (max-width: 767px) {
+    #home {
+        padding-top: 6rem !important;
+    }
+    
+    .rounded-full {
+        width: 220px !important;
+        height: 220px !important;
+    }
+    
+    h1 {
+        font-size: 2.5rem !important;
+    }
+}
 
+/* الأجهزة اللوحية (768px - 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+    #home {
+        padding-top: 5rem !important;
+    }
+    
+    .rounded-full {
+        width: 280px !important;
+        height: 280px !important;
+    }
+    
+    h1 {
+        font-size: 3rem !important;
+    }
+    
+    .gap-12 {
+        gap: 4rem !important;
+    }
+}
+
+/* الوضع الأفقي للهاتف */
+@media (max-height: 600px) and (orientation: landscape) {
+    #home {
+        min-height: auto;
+        padding-top: 4rem !important;
+        padding-bottom: 2rem !important;
+    }
+    
+    .rounded-full {
+        width: 160px !important;
+        height: 160px !important;
+    }
+    
+    .flex-col {
+        flex-direction: row !important;
+        align-items: center;
+        gap: 2rem !important;
+    }
+}
+
+/* تحسينات للشاشات عالية الدقة */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    img {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+    }
+}
+
+/* تقليل الحركة */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* تحسينات لأجهزة اللمس */
+@media (hover: none) and (pointer: coarse) {
+    /* زيادة مساحة اللمس */
+    button, a {
+        min-height: 44px;
+        min-width: 44px;
+        padding: 12px 16px !important;
+    }
+    
+    /* إزالة تأثيرات hover */
+    .hover\:-translate-y-1:hover,
+    .hover\:scale-110:hover {
+        transform: none;
+    }
+}
+
+/* دعم الوضع الداكن */
+@media (prefers-color-scheme: dark) {
+    :root {
+        color-scheme: dark;
+    }
+}
+
+/* طباعة */
+@media print {
+    nav, 
+    button,
+    #mobile-menu,
+    .hover\:bg-primary-10 {
+        display: none !important;
+    }
+    
+    section {
+        break-inside: avoid;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+    
+    .bg-gray-800\/50 {
+        background: white !important;
+        border: 1px solid #ddd !important;
+    }
+    
+    .text-primary {
+        color: black !important;
+        font-weight: bold;
+    }
+    
+    .text-gray-300 {
+        color: #333 !important;
+    }
+}
+
+/* Media Queries لمزيد من التحكم */
+
+/* شاشات صغيرة جداً */
+@media (max-width: 320px) {
+    .text-2xl {
+        font-size: 1.5rem !important;
+    }
+    
+    .text-4xl {
+        font-size: 2rem !important;
+    }
+}
+
+/* شاشات متوسطة */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .lg\:text-6xl {
+        font-size: 3.5rem !important;
+    }
+}
+
+/* شاشات كبيرة */
+@media (min-width: 1280px) {
+    .max-w-6xl {
+        max-width: 80rem !important;
+    }
+}
+
+/* إصلاحات للـ iPhone X/XS/11 Pro */
+@media (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) {
+    #home {
+        padding-top: 7rem !important;
+    }
+}
+
+/* إصلاحات للـ iPhone 12/13 Pro */
+@media (device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) {
+    #home {
+        padding-top: 7.5rem !important;
+    }
+}
+
+/* إصلاحات للـ iPhone 14 Pro Max */
+@media (device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3) {
+    #home {
+        padding-top: 8rem !important;
+    }
+}
+
+/* إصلاحات للهواتف ذات الشقوق (notch phones) */
+@supports (padding: max(0px)) {
+    #home {
+        padding-top: max(5rem, env(safe-area-inset-top)) !important;
+    }
+    
+    nav {
+        padding-top: env(safe-area-inset-top) !important;
+        height: calc(5rem + env(safe-area-inset-top)) !important;
+    }
+}
