@@ -314,29 +314,31 @@
     <!-- Home Section -->
     <section id="home" class="min-h-screen flex items-center pt-32 pb-20 px-4 sm:px-8 lg:px-20 md:pt-16">
         <div class="max-w-6xl mx-auto w-full">
-            <div class="flex flex-col lg:flex-row items-center gap-12">
+            <div class="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
                 <!-- Profile Image -->
                 <div class="relative flex-shrink-0">
+                    <!-- Main image with border and shadow only -->
                     <div
-                        class="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-4 border-primary shadow-2xl shadow-primary hover-lift">
+                        class="w-64 h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-full overflow-hidden border-4 border-primary shadow-2xl shadow-primary hover-lift">
                         <img src="./assets/profile-pic.png" alt="Ghazi Abdullah"
                             class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
                     </div>
-                    <div class="absolute -top-4 -right-4 w-20 h-20 bg-primary-transparent rounded-full -z-10"></div>
-                    <div class="absolute -bottom-6 -left-6 w-32 h-32 bg-primary-transparent rounded-full -z-10"
-                        style="opacity: 0.05;"></div>
+
+                    <!-- Simple decorative element using pseudo-element -->
+                    <div
+                        class="absolute inset-0 -z-10 rounded-full bg-gradient-to-br from-primary/10 to-transparent blur-md">
+                    </div>
                 </div>
 
                 <!-- Text Content -->
                 <div class="text-center lg:text-left space-y-6 flex-1">
-                    <p
-                        class="text-lg md:text-xl text-primary font-mono tracking-wider bg-primary-transparent inline-block px-4 py-1 rounded-full">
-                        SOFTWARE DEVELOPER</p>
+                    <p class="text-lg md:text-xl text-primary font-mono tracking-wider inline-block">
+                        SOFTWARE DEVELOPER
+                    </p>
+
                     <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
                         Hello, I'm <br>
-                        <span
-                            class="text-primary bg-gradient-to-r from-primary to-primary-light bg-clip-text text-transparent">Ghazi
-                            Abdullah</span>
+                        <span class="text-primary">Ghazi Abdullah</span>
                     </h1>
 
                     <p class="text-gray-300 text-lg md:text-xl max-w-2xl mx-auto lg:mx-0 leading-relaxed">
@@ -357,6 +359,7 @@
             </div>
         </div>
     </section>
+
 
     <!-- About Section -->
     <section id="about" class="py-20 px-4 sm:px-8 lg:px-20">
