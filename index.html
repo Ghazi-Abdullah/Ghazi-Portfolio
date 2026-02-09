@@ -246,6 +246,103 @@
             border-radius: 4px;
             transition: width 1s ease-in-out;
         }
+
+        /* Animations */
+        @keyframes gradient-rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes float-delayed {
+
+            0%,
+            100% {
+                transform: translateY(-5px);
+            }
+
+            50% {
+                transform: translateY(5px);
+            }
+        }
+
+        @keyframes pulse-slow {
+
+            0%,
+            100% {
+                opacity: 0.5;
+            }
+
+            50% {
+                opacity: 0.8;
+            }
+        }
+
+        .animate-gradient-rotate {
+            animation: gradient-rotate 8s linear infinite;
+        }
+
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .animate-float-delayed {
+            animation: float-delayed 4s ease-in-out infinite;
+        }
+
+        .animate-pulse-slow {
+            animation: pulse-slow 4s ease-in-out infinite;
+        }
+
+        /* تحسينات التدرج اللوني لتتناسب مع نظام الألوان */
+        .from-amber-500 {
+            --tw-gradient-from: #f59e0b var(--tw-gradient-from-position);
+            --tw-gradient-from-position: ;
+            --tw-gradient-to: rgb(245 158 11 / 0) var(--tw-gradient-to-position);
+            --tw-gradient-to-position: ;
+            --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+        }
+
+        .via-orange-500 {
+            --tw-gradient-via: #f97316 var(--tw-gradient-via-position);
+            --tw-gradient-via-position: ;
+            --tw-gradient-to: rgb(249 115 22 / 0) var(--tw-gradient-to-position);
+            --tw-gradient-to-position: ;
+            --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-via), var(--tw-gradient-to);
+        }
+
+        .to-amber-300 {
+            --tw-gradient-to: #fcd34d var(--tw-gradient-to-position);
+            --tw-gradient-to-position: ;
+        }
+
+        /* تحسينات للاستجابة */
+        @media (max-width: 640px) {
+            .hover-lift:hover {
+                transform: translateY(-3px);
+            }
+
+            .relative.w-64.h-64 {
+                width: 12rem;
+                height: 12rem;
+            }
+        }
     </style>
 </head>
 
@@ -317,16 +414,44 @@
             <div class="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
                 <!-- Profile Image -->
                 <div class="relative flex-shrink-0">
-                    <!-- Main image with border and shadow only -->
-                    <div
-                        class="w-64 h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-full overflow-hidden border-4 border-primary shadow-2xl shadow-primary hover-lift">
-                        <img src="./assets/profile-pic.png" alt="Ghazi Abdullah"
-                            class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
-                    </div>
+                    <!-- Main image container with enhanced effects -->
+                    <div class="relative w-64 h-64 md:w-72 md:h-72 lg:w-80 lg:h-80">
+                        <!-- Animated gradient border ring -->
+                        <div
+                            class="absolute inset-0 rounded-full bg-gradient-to-r from-amber-500 via-orange-500 to-amber-300 p-1 animate-gradient-rotate">
+                            <div class="w-full h-full rounded-full bg-gray-900"></div>
+                        </div>
 
-                    <!-- Simple decorative element using pseudo-element -->
-                    <div
-                        class="absolute inset-0 -z-10 rounded-full bg-gradient-to-br from-primary/10 to-transparent blur-md">
+                        <!-- Inner image container -->
+                        <div
+                            class="relative w-full h-full rounded-full overflow-hidden border-4 border-gray-900 z-10 hover-lift">
+                            <img src="./assets/profile-pic.png" alt="Ghazi Abdullah - Software Developer"
+                                class="w-full h-full object-cover hover:scale-110 transition-transform duration-700"
+                                loading="eager">
+
+                            <!-- Overlay effect on hover -->
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-gray-900/70 via-transparent to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500">
+                            </div>
+
+                            <!-- Shine effect on hover -->
+                            <div
+                                class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full hover:translate-x-full transition-transform duration-1000">
+                            </div>
+                        </div>
+
+                        <!-- Floating elements -->
+                        <div
+                            class="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-amber-500/30 blur-sm animate-float">
+                        </div>
+                        <div
+                            class="absolute -bottom-2 -left-2 w-8 h-8 rounded-full bg-orange-500/30 blur-sm animate-float-delayed">
+                        </div>
+
+                        <!-- Glow effect -->
+                        <div
+                            class="absolute -inset-4 -z-10 bg-gradient-to-r from-amber-500/20 via-orange-500/20 to-amber-300/20 rounded-full blur-xl opacity-70 animate-pulse-slow">
+                        </div>
                     </div>
                 </div>
 
@@ -706,7 +831,7 @@
                             <div
                                 class="p-3 bg-gray-800/30 rounded-lg text-center hover:bg-gray-800/50 transition-colors">
                                 <div class="text-primary font-medium text-sm">PMP</div>
-                                <div class="text-gray-400 text-xs">Kuality</div>
+                                <div class="text-gray-400 text-xs">Kuwait</div>
                                 <div class="text-primary text-xs mt-1">2026</div>
                             </div>
                             <!-- Certificate 2 -->
@@ -869,7 +994,7 @@
             <h2 class="section-title text-center text-4xl md:text-5xl lg:text-6xl font-bold mb-16">Projects</h2>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-               
+
                 <!-- Project 1 -->
                 <div class="card overflow-hidden group hover-lift">
                     <div class="h-48 overflow-hidden">
@@ -904,7 +1029,7 @@
                 </div>
 
                 <!-- Project 3 -->
-                 <div class="card overflow-hidden group hover-lift">
+                <div class="card overflow-hidden group hover-lift">
                     <div class="h-48 overflow-hidden">
                         <img src="./assets/Villa.png" alt="Villa Project"
                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
