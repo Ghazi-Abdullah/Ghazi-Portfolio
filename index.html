@@ -248,6 +248,62 @@
             border-radius: 4px;
             transition: width 1s ease-in-out;
         }
+
+        /* إطار مضيء للصورة الشخصية */
+.profile-glow {
+    position: relative;
+}
+
+.profile-glow::before {
+    content: '';
+    position: absolute;
+    top: -6px;
+    left: -6px;
+    right: -6px;
+    bottom: -6px;
+    background: linear-gradient(45deg, var(--primary-color), var(--primary-light), var(--primary-color));
+    border-radius: 50%;
+    z-index: -1;
+    animation: pulse-glow 3s ease-in-out infinite;
+    opacity: 0.7;
+}
+
+@keyframes pulse-glow {
+    0%, 100% {
+        opacity: 0.5;
+        box-shadow: 0 0 20px 5px rgba(var(--primary-color), 0.3);
+    }
+    50% {
+        opacity: 0.8;
+        box-shadow: 0 0 30px 10px rgba(var(--primary-color), 0.5);
+    }
+}
+
+/* توهج داخلي للصورة */
+.profile-image-inner {
+    position: relative;
+    overflow: hidden;
+}
+
+.profile-image-inner::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at center, transparent 30%, rgba(var(--primary-color), 0.1) 70%);
+    pointer-events: none;
+    border-radius: 50%;
+}
+@keyframes pulse {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.6; }
+}
+
+.animate-pulse {
+    animation: pulse 2s ease-in-out infinite;
+}
     </style>
 </head>
 
@@ -317,20 +373,22 @@
     <section id="home" class="min-h-screen flex items-center pt-32 pb-20 px-4 sm:px-8 lg:px-20 md:pt-16">
         <div class="max-w-6xl mx-auto w-full">
             <div class="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
-                <!-- Profile Image -->
-                <div class="relative flex-shrink-0">
-                    <!-- Main image with border and shadow only -->
-                    <div
-                        class="w-64 h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-full overflow-hidden border-4 border-primary shadow-2xl shadow-primary hover-lift">
-                        <img src="./assets/profile-pic.png" alt="Ghazi Abdullah"
-                            class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
-                    </div>
-
-                    <!-- Simple decorative element using pseudo-element -->
-                    <div
-                        class="absolute inset-0 -z-10 rounded-full bg-gradient-to-br from-primary/10 to-transparent blur-md">
-                    </div>
-                </div>
+               <!-- Profile Image - Simple Glow Version -->
+<div class="relative flex-shrink-0">
+    <div class="relative w-64 h-64 md:w-72 md:h-72 lg:w-80 lg:h-80">
+        <!-- Glow effect background -->
+        <div class="absolute inset-0 rounded-full bg-gradient-to-r from-primary/40 via-primary/20 to-primary/10 blur-xl animate-pulse"></div>
+        
+        <!-- Main image with enhanced glow -->
+        <div class="relative w-full h-full rounded-full overflow-hidden border-4 border-primary 
+                    shadow-[0_0_30px_10px_rgba(255,107,0,0.4)] 
+                    hover:shadow-[0_0_40px_15px_rgba(255,107,0,0.6)] 
+                    transition-all duration-500 hover-lift">
+            <img src="./assets/profile-pic.png" alt="Ghazi Abdullah"
+                class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+        </div>
+    </div>
+</div>
 
                 <!-- Text Content -->
                 <div class="text-center lg:text-left space-y-6 flex-1">
