@@ -250,60 +250,132 @@
         }
 
         /* إطار مضيء للصورة الشخصية */
-.profile-glow {
-    position: relative;
-}
+        .profile-glow {
+            position: relative;
+        }
 
-.profile-glow::before {
-    content: '';
-    position: absolute;
-    top: -6px;
-    left: -6px;
-    right: -6px;
-    bottom: -6px;
-    background: linear-gradient(45deg, var(--primary-color), var(--primary-light), var(--primary-color));
-    border-radius: 50%;
-    z-index: -1;
-    animation: pulse-glow 3s ease-in-out infinite;
-    opacity: 0.7;
-}
+        .profile-glow::before {
+            content: '';
+            position: absolute;
+            top: -6px;
+            left: -6px;
+            right: -6px;
+            bottom: -6px;
+            background: linear-gradient(45deg, var(--primary-color), var(--primary-light), var(--primary-color));
+            border-radius: 50%;
+            z-index: -1;
+            animation: pulse-glow 3s ease-in-out infinite;
+            opacity: 0.7;
+        }
 
-@keyframes pulse-glow {
-    0%, 100% {
-        opacity: 0.5;
-        box-shadow: 0 0 20px 5px rgba(var(--primary-color), 0.3);
-    }
-    50% {
-        opacity: 0.8;
-        box-shadow: 0 0 30px 10px rgba(var(--primary-color), 0.5);
-    }
-}
+        @keyframes pulse-glow {
 
-/* توهج داخلي للصورة */
-.profile-image-inner {
-    position: relative;
-    overflow: hidden;
-}
+            0%,
+            100% {
+                opacity: 0.5;
+                box-shadow: 0 0 20px 5px rgba(var(--primary-color), 0.3);
+            }
 
-.profile-image-inner::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(circle at center, transparent 30%, rgba(var(--primary-color), 0.1) 70%);
-    pointer-events: none;
-    border-radius: 50%;
-}
-@keyframes pulse {
-    0%, 100% { opacity: 0.3; }
-    50% { opacity: 0.6; }
-}
+            50% {
+                opacity: 0.8;
+                box-shadow: 0 0 30px 10px rgba(var(--primary-color), 0.5);
+            }
+        }
 
-.animate-pulse {
-    animation: pulse 2s ease-in-out infinite;
-}
+        /* توهج داخلي للصورة */
+        .profile-image-inner {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .profile-image-inner::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at center, transparent 30%, rgba(var(--primary-color), 0.1) 70%);
+            pointer-events: none;
+            border-radius: 50%;
+        }
+
+        /* Custom CSS for glow effects */
+        :root {
+            --primary: 255, 107, 0;
+            /* Orange color in RGB */
+            --primary-light: 255, 140, 50;
+        }
+
+        /* Custom glow shadow */
+        .shadow-glow {
+            box-shadow:
+                0 0 30px 10px rgba(var(--primary), 0.4),
+                inset 0 0 20px rgba(var(--primary), 0.1);
+        }
+
+        .shadow-glow-hover {
+            box-shadow:
+                0 0 50px 20px rgba(var(--primary), 0.6),
+                inset 0 0 30px rgba(var(--primary), 0.2);
+        }
+
+        /* Custom animations */
+        @keyframes pulse-slow {
+
+            0%,
+            100% {
+                opacity: 0.5;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.8;
+                transform: scale(1.05);
+            }
+        }
+
+        @keyframes spin-slow {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes spin-slow-reverse {
+            from {
+                transform: rotate(360deg);
+            }
+
+            to {
+                transform: rotate(0deg);
+            }
+        }
+
+        .animate-pulse-slow {
+            animation: pulse-slow 3s ease-in-out infinite;
+        }
+
+        .animate-spin-slow {
+            animation: spin-slow 20s linear infinite;
+        }
+
+        .animate-spin-slow-reverse {
+            animation: spin-slow-reverse 25s linear infinite;
+        }
+
+        /* Gradient radial utility */
+        .bg-gradient-radial {
+            background: radial-gradient(var(--tw-gradient-stops));
+        }
+
+        /* Optional: Add this for better hover effect */
+        .group:hover .group-hover\:scale-110 {
+            transform: scale(1.1);
+        }
     </style>
 </head>
 
@@ -373,22 +445,40 @@
     <section id="home" class="min-h-screen flex items-center pt-32 pb-20 px-4 sm:px-8 lg:px-20 md:pt-16">
         <div class="max-w-6xl mx-auto w-full">
             <div class="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
-               <!-- Profile Image - Simple Glow Version -->
-<div class="relative flex-shrink-0">
-    <div class="relative w-64 h-64 md:w-72 md:h-72 lg:w-80 lg:h-80">
-        <!-- Glow effect background -->
-        <div class="absolute inset-0 rounded-full bg-gradient-to-r from-primary/40 via-primary/20 to-primary/10 blur-xl animate-pulse"></div>
-        
-        <!-- Main image with enhanced glow -->
-        <div class="relative w-full h-full rounded-full overflow-hidden border-4 border-primary 
-                    shadow-[0_0_30px_10px_rgba(255,107,0,0.4)] 
-                    hover:shadow-[0_0_40px_15px_rgba(255,107,0,0.6)] 
-                    transition-all duration-500 hover-lift">
-            <img src="./assets/profile-pic.png" alt="Ghazi Abdullah"
-                class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
-        </div>
-    </div>
-</div>
+                <!-- Simplified Version using Tailwind variables -->
+                <div class="relative flex-shrink-0">
+                    <!-- Outer glow effect -->
+                    <div class="absolute inset-0 -z-10 rounded-full" style="background: radial-gradient(circle at center, 
+                 var(--primary-transparent) 0%, 
+                 transparent 70%);
+                filter: blur(40px);
+                animation: pulse 4s ease-in-out infinite;">
+                    </div>
+
+                    <!-- Profile image -->
+                    <div class="relative w-64 h-64 rounded-full overflow-hidden border-4" style="border-color: var(--primary-border-hover);
+                box-shadow: 0 0 40px 15px var(--primary-shadow);
+                transition: all 0.5s ease;">
+
+                        <!-- Gradient overlay -->
+                        <div class="absolute inset-0 rounded-full -z-5" style="background: radial-gradient(circle at 30% 30%, 
+                     var(--primary-transparent) 0%, 
+                     transparent 60%);">
+                        </div>
+
+                        <img src="./assets/profile-pic.png" alt="Your Name"
+                            class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+                    </div>
+
+                    <!-- Hover glow effect -->
+                    <div class="absolute inset-0 -z-10 rounded-full opacity-0 hover:opacity-100 transition-opacity duration-500"
+                        style="background: radial-gradient(circle at center, 
+                 hsla(var(--primary-hue), var(--saturation), var(--lightness), 0.3) 0%, 
+                 transparent 70%);
+                filter: blur(30px);">
+                    </div>
+                </div>
+
 
                 <!-- Text Content -->
                 <div class="text-center lg:text-left space-y-6 flex-1">
