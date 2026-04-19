@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ghazi Abdullah - Portfolio</title>
-    <!-- Google Fonts (Inter) - Modern Typography -->
+    <!-- Google Fonts + Font Awesome + Tailwind -->
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap"
         rel="stylesheet">
@@ -54,7 +54,7 @@
             box-shadow: 0 4px 12px -1px var(--primary-shadow) !important;
         }
 
-        /* Cards (original) */
+        /* Cards */
         .card {
             background: var(--bg-card);
             backdrop-filter: blur(10px);
@@ -136,7 +136,6 @@
             padding-bottom: 5rem;
         }
 
-        /* Section title with gradient text - NO UNDERLINE */
         .section-title {
             position: relative;
             display: inline-block;
@@ -148,7 +147,6 @@
             font-weight: 800;
         }
 
-        /* Hero name gradient */
         #home h1 .text-primary {
             background: linear-gradient(135deg, #ffffff, var(--primary-color));
             background-clip: text;
@@ -156,7 +154,7 @@
             color: transparent;
         }
 
-        /* ========== NEW CIRCULAR PROFILE IMAGE STYLES ========== */
+        /* Profile Image - Circular with professional shadows */
         .profile-img-container {
             width: 280px;
             height: 280px;
@@ -185,7 +183,6 @@
             transform: scale(1.05);
         }
 
-        /* Edit button overlay */
         .edit-btn-overlay {
             position: absolute;
             bottom: 15px;
@@ -214,7 +211,7 @@
             font-size: 1.2rem;
         }
 
-        /* Image Editor Modal */
+        /* Editor Modal */
         .editor-modal {
             display: none;
             position: fixed;
@@ -237,7 +234,7 @@
             background: #1e293b;
             border-radius: 2rem;
             width: 90%;
-            max-width: 800px;
+            max-width: 850px;
             padding: 1.5rem;
             border: 1px solid var(--primary-color);
             box-shadow: 0 25px 40px rgba(0, 0, 0, 0.5);
@@ -265,13 +262,13 @@
         .editor-controls {
             display: flex;
             flex-wrap: wrap;
-            gap: 1rem;
+            gap: 0.8rem;
             justify-content: center;
             margin-top: 1rem;
         }
 
-        .editor-controls input,
-        .editor-controls button {
+        .editor-controls button,
+        .editor-controls input {
             padding: 0.5rem 1rem;
             border-radius: 2rem;
             border: none;
@@ -279,6 +276,7 @@
             color: white;
             cursor: pointer;
             transition: 0.2s;
+            font-size: 0.9rem;
         }
 
         .editor-controls button:hover {
@@ -287,6 +285,19 @@
 
         .zoom-slider {
             width: 150px;
+            cursor: pointer;
+        }
+
+        .zoom-value {
+            background: #0f172a;
+            padding: 0.3rem 0.8rem;
+            border-radius: 2rem;
+            font-size: 0.9rem;
+        }
+
+        .pan-buttons {
+            display: flex;
+            gap: 0.5rem;
         }
 
         @media (max-width: 640px) {
@@ -301,7 +312,7 @@
             }
         }
 
-        /* Animations (original) */
+        /* Animations & Modal */
         .animate-fade-in {
             animation: fadeInUp 0.6s ease forwards;
             opacity: 0;
@@ -319,7 +330,6 @@
             }
         }
 
-        /* Modal for certificates */
         #certModal {
             transition: opacity 0.3s ease, visibility 0.3s ease;
         }
@@ -391,35 +401,28 @@
         </div>
     </nav>
 
-    <!-- Home Section with Circular Profile Image + Editor -->
+    <!-- Home Section -->
     <section id="home"
         class="min-h-screen flex items-center pt-24 pb-20 px-4 sm:px-8 lg:px-20 relative overflow-hidden">
         <canvas id="codeBgCanvas" class="absolute top-0 left-0 w-full h-full -z-0"></canvas>
         <div class="max-w-6xl mx-auto w-full relative z-10">
             <div class="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
-                <!-- Profile Image - Circular with edit button -->
                 <div class="relative flex-shrink-0">
-                    <!-- Fog canvas (behind image) -->
                     <canvas id="fogCanvas" class="absolute top-0 left-0 w-full h-full rounded-full pointer-events-none"
                         style="z-index: 0;"></canvas>
                     <div class="profile-img-container" id="profileImgContainer">
                         <img src="./assets/profile-pic1.jpeg" alt="Ghazi Abdullah" id="profileImage"
                             onerror="this.onerror=null; this.src='https://randomuser.me/api/portraits/men/32.jpg';">
-                        <div class="edit-btn-overlay" id="editImageBtn">
-                            <i class="fas fa-camera"></i>
-                        </div>
+                        <div class="edit-btn-overlay" id="editImageBtn"><i class="fas fa-camera"></i></div>
                     </div>
                 </div>
-                <!-- Text Content -->
                 <div class="text-center lg:text-left space-y-6 flex-1">
                     <p class="text-lg md:text-xl text-primary font-mono tracking-wider">SOFTWARE DEVELOPER</p>
-                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-                        Hello, I'm <br><span class="text-primary">Ghazi Abdullah</span>
-                    </h1>
-                    <p class="text-gray-300 text-lg md:text-xl max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-                        Software Engineering graduate experienced in developing robust web applications and delivering
-                        clean, maintainable code with real-world impact.
-                    </p>
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">Hello, I'm <br><span
+                            class="text-primary">Ghazi Abdullah</span></h1>
+                    <p class="text-gray-300 text-lg md:text-xl max-w-2xl mx-auto lg:mx-0 leading-relaxed">Software
+                        Engineering graduate experienced in developing robust web applications and delivering clean,
+                        maintainable code with real-world impact.</p>
                     <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
                         <button onclick="window.open('./assets/GHAZI_ALI_ABDULLAH.pdf')" class="btn-primary">Download
                             CV</button>
@@ -431,7 +434,7 @@
         </div>
     </section>
 
-    <!-- About Section (unchanged) -->
+    <!-- About Section -->
     <section id="about" class="py-20 px-4 sm:px-8 lg:px-20">
         <div class="max-w-4xl mx-auto">
             <h2 class="section-title text-center text-4xl md:text-5xl font-bold mb-16">About Me</h2>
@@ -446,11 +449,9 @@
                     <p class="text-gray-300">Bachelor's Degree in Software Engineering</p>
                 </div>
                 <div class="card p-8 hover-lift">
-                    <p class="text-gray-300 mb-6 leading-relaxed text-lg">
-                        As a passionate Software Engineering graduate, I thrive on turning complex problems into elegant
-                        solutions through code. I'm dedicated to creating impactful digital experiences with modern
-                        technologies.
-                    </p>
+                    <p class="text-gray-300 mb-6 leading-relaxed text-lg">As a passionate Software Engineering graduate,
+                        I thrive on turning complex problems into elegant solutions through code. I'm dedicated to
+                        creating impactful digital experiences with modern technologies.</p>
                     <ul class="space-y-4 text-gray-300">
                         <li class="flex items-start gap-4"><svg class="w-6 h-6 text-primary flex-shrink-0 mt-0.5"
                                 fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -473,7 +474,7 @@
         </div>
     </section>
 
-    <!-- Technical Skills Section (unchanged) -->
+    <!-- Technical Skills Section -->
     <section id="experience" class="py-20 px-4 sm:px-8 lg:px-20">
         <div class="max-w-6xl mx-auto">
             <h2 class="section-title text-center text-4xl md:text-5xl font-bold mb-16">Technical Skills</h2>
@@ -632,7 +633,7 @@
         </div>
     </section>
 
-    <!-- Skills & Certificates Section (unchanged) -->
+    <!-- Skills & Certificates Section -->
     <section id="skills" class="py-20 px-4 sm:px-8 lg:px-20">
         <div class="max-w-6xl mx-auto">
             <h2 class="section-title text-center text-4xl md:text-5xl font-bold mb-16">Skills & Certificates</h2>
@@ -701,7 +702,7 @@
         </div>
     </section>
 
-    <!-- Projects Section (unchanged) -->
+    <!-- Projects Section -->
     <section id="projects" class="py-20 px-4 sm:px-8 lg:px-20">
         <div class="max-w-6xl mx-auto">
             <h2 class="section-title text-center text-4xl md:text-5xl font-bold mb-16">Projects</h2>
@@ -771,7 +772,7 @@
         </div>
     </section>
 
-    <!-- Contact Section (unchanged) -->
+    <!-- Contact Section -->
     <section id="contact" class="py-20 px-4 sm:px-8 lg:px-20">
         <div class="max-w-4xl mx-auto">
             <h2 class="section-title text-center text-4xl md:text-5xl font-bold mb-16">Contact Me</h2>
@@ -808,11 +809,11 @@
         </div>
     </div>
 
-    <!-- Image Editor Modal -->
+    <!-- Enhanced Image Editor Modal -->
     <div id="imageEditorModal" class="editor-modal">
         <div class="editor-container">
             <div class="flex justify-between items-center mb-4">
-                <h3 class="text-2xl font-bold text-primary">تعديل الصورة</h3>
+                <h3 class="text-2xl font-bold text-primary">تحرير الصورة</h3>
                 <button id="closeEditorBtn" class="text-white text-2xl hover:text-primary">&times;</button>
             </div>
             <div class="canvas-area">
@@ -820,19 +821,30 @@
             </div>
             <div class="editor-controls">
                 <input type="file" id="uploadImageInput" accept="image/jpeg,image/png,image/jpg">
+                <div class="pan-buttons">
+                    <button id="panUpBtn"><i class="fas fa-arrow-up"></i></button>
+                    <button id="panDownBtn"><i class="fas fa-arrow-down"></i></button>
+                    <button id="panLeftBtn"><i class="fas fa-arrow-left"></i></button>
+                    <button id="panRightBtn"><i class="fas fa-arrow-right"></i></button>
+                    <button id="centerBtn"><i class="fas fa-dot-circle"></i> توسيط</button>
+                </div>
                 <button id="rotateLeftBtn"><i class="fas fa-undo-alt"></i> تدوير</button>
                 <button id="rotateRightBtn"><i class="fas fa-redo-alt"></i> تدوير</button>
-                <input type="range" id="zoomSlider" class="zoom-slider" min="0.5" max="2.5" step="0.01" value="1">
-                <button id="resetEditorBtn">إعادة ضبط</button>
+                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                    <span>التكبير:</span>
+                    <input type="range" id="zoomSlider" class="zoom-slider" min="0.2" max="4.0" step="0.01" value="1">
+                    <span id="zoomValueDisplay" class="zoom-value">1.0x</span>
+                </div>
+                <button id="resetEditorBtn">إعادة ضبط كامل</button>
                 <button id="saveImageBtn" class="bg-primary">حفظ الصورة</button>
             </div>
-            <p class="text-gray-400 text-sm text-center mt-3">يمكنك سحب الصورة لتحريكها (Pan) وتكبيرها وتدويرها وقصها
-                بشكل دائري</p>
+            <p class="text-gray-400 text-sm text-center mt-3">يمكنك سحب الصورة بالماوس لتحريكها، أو استخدام أزرار
+                الأسهم. المدى الموسع للتكبير/التصغير (0.2x إلى 4.0x).</p>
         </div>
     </div>
 
     <script>
-        // ========== MODAL FUNCTIONS (Certificates) ==========
+        // Certificate Modal functions
         function openCertModal(imgSrc, certName) {
             const modal = document.getElementById('certModal');
             const modalImg = document.getElementById('modalImage');
@@ -849,7 +861,7 @@
         }
         document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
 
-        // ========== MOBILE MENU TOGGLE ==========
+        // Mobile menu toggle
         const menuToggle = document.getElementById('menu-toggle');
         const mobileMenu = document.getElementById('mobile-menu');
         const menuIcon = document.getElementById('menu-icon');
@@ -869,7 +881,7 @@
             });
         }
 
-        // ========== FOG EFFECT (original) ==========
+        // Fog effect
         (function () {
             const canvas = document.getElementById('fogCanvas');
             if (!canvas) return;
@@ -885,8 +897,8 @@
             }
             function initFog() {
                 particles = [];
-                const particleCount = Math.floor(width * height / 4000);
-                for (let i = 0; i < particleCount; i++) {
+                const count = Math.floor(width * height / 4000);
+                for (let i = 0; i < count; i++) {
                     particles.push({
                         x: Math.random() * width, y: Math.random() * height,
                         radius: Math.random() * 60 + 20, opacity: Math.random() * 0.25 + 0.05,
@@ -923,7 +935,7 @@
             window.addEventListener('beforeunload', () => { if (animationId) cancelAnimationFrame(animationId); });
         })();
 
-        // ========== DYNAMIC BACKGROUND PARTICLES (moving code) ==========
+        // Moving code background
         (function () {
             const canvas = document.getElementById('codeBgCanvas');
             if (!canvas) return;
@@ -975,18 +987,24 @@
             window.addEventListener('beforeunload', () => { if (animationId) cancelAnimationFrame(animationId); });
         })();
 
-        // ========== IMAGE EDITOR (Circular, Zoom, Pan, Rotate, Upload) ==========
+        // Enhanced Image Editor Logic
         const editorModal = document.getElementById('imageEditorModal');
         const editBtn = document.getElementById('editImageBtn');
         const closeEditorBtn = document.getElementById('closeEditorBtn');
         const editorCanvas = document.getElementById('editorCanvas');
         const editorCtx = editorCanvas.getContext('2d');
         const uploadInputEditor = document.getElementById('uploadImageInput');
-        const zoomSliderEditor = document.getElementById('zoomSlider');
+        const zoomSlider = document.getElementById('zoomSlider');
+        const zoomValueDisplay = document.getElementById('zoomValueDisplay');
         const rotateLeftBtn = document.getElementById('rotateLeftBtn');
         const rotateRightBtn = document.getElementById('rotateRightBtn');
         const resetEditorBtn = document.getElementById('resetEditorBtn');
         const saveImageBtn = document.getElementById('saveImageBtn');
+        const panUpBtn = document.getElementById('panUpBtn');
+        const panDownBtn = document.getElementById('panDownBtn');
+        const panLeftBtn = document.getElementById('panLeftBtn');
+        const panRightBtn = document.getElementById('panRightBtn');
+        const centerBtn = document.getElementById('centerBtn');
         const profileImgElement = document.getElementById('profileImage');
 
         let currentImg = new Image();
@@ -996,7 +1014,6 @@
         let isDraggingEditor = false;
         let lastX, lastY;
 
-        // Load current profile image into editor
         function loadImageIntoEditor(src) {
             currentImg = new Image();
             currentImg.crossOrigin = "Anonymous";
@@ -1012,8 +1029,13 @@
             currentZoom = 1;
             panX = 0;
             panY = 0;
-            zoomSliderEditor.value = 1;
+            zoomSlider.value = 1;
+            updateZoomDisplay();
             drawEditorCanvas();
+        }
+
+        function updateZoomDisplay() {
+            zoomValueDisplay.textContent = currentZoom.toFixed(2) + 'x';
         }
 
         function drawEditorCanvas() {
@@ -1029,7 +1051,7 @@
             const imgH = currentImg.height;
             editorCtx.drawImage(currentImg, -imgW / 2, -imgH / 2, imgW, imgH);
             editorCtx.restore();
-            // Apply circular clip
+            // Apply circular clipping
             editorCtx.save();
             editorCtx.beginPath();
             editorCtx.arc(size / 2, size / 2, size / 2, 0, Math.PI * 2);
@@ -1041,7 +1063,7 @@
             editorCtx.translate(panX, panY);
             editorCtx.drawImage(currentImg, -imgW / 2, -imgH / 2, imgW, imgH);
             editorCtx.restore();
-            // Draw border
+            // Border
             editorCtx.beginPath();
             editorCtx.arc(size / 2, size / 2, size / 2, 0, Math.PI * 2);
             editorCtx.strokeStyle = '#f97316';
@@ -1049,7 +1071,7 @@
             editorCtx.stroke();
         }
 
-        // Drag to pan
+        // Mouse panning
         function onEditorMouseDown(e) {
             isDraggingEditor = true;
             const rect = editorCanvas.getBoundingClientRect();
@@ -1078,12 +1100,19 @@
         window.addEventListener('mouseup', onEditorMouseUp);
         editorCanvas.style.cursor = 'grab';
 
-        zoomSliderEditor.addEventListener('input', (e) => {
+        // Controls
+        zoomSlider.addEventListener('input', (e) => {
             currentZoom = parseFloat(e.target.value);
+            updateZoomDisplay();
             drawEditorCanvas();
         });
         rotateLeftBtn.addEventListener('click', () => { currentAngleDeg -= 90; drawEditorCanvas(); });
         rotateRightBtn.addEventListener('click', () => { currentAngleDeg += 90; drawEditorCanvas(); });
+        panUpBtn.addEventListener('click', () => { panY -= 20; drawEditorCanvas(); });
+        panDownBtn.addEventListener('click', () => { panY += 20; drawEditorCanvas(); });
+        panLeftBtn.addEventListener('click', () => { panX -= 20; drawEditorCanvas(); });
+        panRightBtn.addEventListener('click', () => { panX += 20; drawEditorCanvas(); });
+        centerBtn.addEventListener('click', () => { panX = 0; panY = 0; drawEditorCanvas(); });
         resetEditorBtn.addEventListener('click', () => { resetEditorTransformations(); });
         uploadInputEditor.addEventListener('change', (e) => {
             const file = e.target.files[0];
@@ -1122,7 +1151,7 @@
         closeEditorBtn.addEventListener('click', closeEditor);
         window.addEventListener('click', (e) => { if (e.target === editorModal) closeEditor(); });
 
-        // ========== SMOOTH SCROLL ==========
+        // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -1131,7 +1160,7 @@
             });
         });
 
-        // ========== ADJUST HOME PADDING ==========
+        // Adjust home padding
         function adjustPadding() {
             const nav = document.querySelector('nav');
             const home = document.getElementById('home');
@@ -1140,7 +1169,7 @@
         window.addEventListener('load', adjustPadding);
         window.addEventListener('resize', adjustPadding);
 
-        // ========== FADE-IN ON SCROLL ==========
+        // Fade-in on scroll
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('animate-fade-in'); observer.unobserve(entry.target); } });
         }, { threshold: 0.1 });
