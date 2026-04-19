@@ -5,6 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ghazi Abdullah - Portfolio</title>
+    <!-- Google Fonts (Inter) - Modern Typography -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -30,6 +34,7 @@
             background: linear-gradient(135deg, var(--bg-darker) 0%, var(--bg-dark) 100%);
             color: var(--text-light);
             line-height: 1.7;
+            font-family: 'Inter', sans-serif;
         }
 
         /* Utility */
@@ -49,7 +54,7 @@
             box-shadow: 0 4px 12px -1px var(--primary-shadow) !important;
         }
 
-        /* Cards */
+        /* Cards (original) */
         .card {
             background: var(--bg-card);
             backdrop-filter: blur(10px);
@@ -131,56 +136,172 @@
             padding-bottom: 5rem;
         }
 
+        /* Section title with gradient text - NO UNDERLINE */
         .section-title {
             position: relative;
             display: inline-block;
             margin-bottom: 1rem;
+            background: linear-gradient(135deg, #ffffff, var(--primary-color));
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            font-weight: 800;
         }
 
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 3px;
-            background-color: var(--primary-color);
-            border-radius: 3px;
+        /* Hero name gradient */
+        #home h1 .text-primary {
+            background: linear-gradient(135deg, #ffffff, var(--primary-color));
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
         }
 
-        /* Profile glow */
-        .profile-glow {
+        /* ========== NEW CIRCULAR PROFILE IMAGE STYLES ========== */
+        .profile-img-container {
+            width: 280px;
+            height: 280px;
+            margin: 0 auto;
             position: relative;
-        }
-
-        .profile-glow::before {
-            content: '';
-            position: absolute;
-            top: -6px;
-            left: -6px;
-            right: -6px;
-            bottom: -6px;
-            background: linear-gradient(45deg, var(--primary-color), var(--primary-light));
             border-radius: 50%;
-            z-index: -1;
-            animation: pulse-glow 3s ease-in-out infinite;
-            opacity: 0.7;
+            overflow: hidden;
+            box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.5), 0 0 0 6px rgba(249, 115, 22, 0.3), 0 0 0 12px rgba(249, 115, 22, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
         }
 
-        @keyframes pulse-glow {
+        .profile-img-container:hover {
+            transform: scale(1.02);
+            box-shadow: 0 25px 40px -12px rgba(0, 0, 0, 0.6), 0 0 0 6px rgba(249, 115, 22, 0.5), 0 0 0 14px rgba(249, 115, 22, 0.2);
+        }
 
-            0%,
-            100% {
-                opacity: 0.5;
+        .profile-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .profile-img-container:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Edit button overlay */
+        .edit-btn-overlay {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(4px);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            z-index: 10;
+            border: 1px solid var(--primary-color);
+        }
+
+        .edit-btn-overlay:hover {
+            background: var(--primary-color);
+            transform: scale(1.1);
+        }
+
+        .edit-btn-overlay i {
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        /* Image Editor Modal */
+        .editor-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .editor-modal.active {
+            display: flex;
+        }
+
+        .editor-container {
+            background: #1e293b;
+            border-radius: 2rem;
+            width: 90%;
+            max-width: 800px;
+            padding: 1.5rem;
+            border: 1px solid var(--primary-color);
+            box-shadow: 0 25px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .canvas-area {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        #editorCanvas {
+            border-radius: 50%;
+            width: 300px;
+            height: 300px;
+            object-fit: cover;
+            box-shadow: 0 0 0 4px var(--primary-color);
+            cursor: grab;
+        }
+
+        #editorCanvas:active {
+            cursor: grabbing;
+        }
+
+        .editor-controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        .editor-controls input,
+        .editor-controls button {
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            border: none;
+            background: #0f172a;
+            color: white;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .editor-controls button:hover {
+            background: var(--primary-color);
+        }
+
+        .zoom-slider {
+            width: 150px;
+        }
+
+        @media (max-width: 640px) {
+            .profile-img-container {
+                width: 220px;
+                height: 220px;
             }
 
-            50% {
-                opacity: 0.8;
+            #editorCanvas {
+                width: 220px;
+                height: 220px;
             }
         }
 
-        /* Animations */
+        /* Animations (original) */
         .animate-fade-in {
             animation: fadeInUp 0.6s ease forwards;
             opacity: 0;
@@ -198,7 +319,7 @@
             }
         }
 
-        /* Modal */
+        /* Modal for certificates */
         #certModal {
             transition: opacity 0.3s ease, visibility 0.3s ease;
         }
@@ -270,27 +391,26 @@
         </div>
     </nav>
 
-    <!-- Home Section with profile image: no border, random fog/glow behind -->
+    <!-- Home Section with Circular Profile Image + Editor -->
     <section id="home"
         class="min-h-screen flex items-center pt-24 pb-20 px-4 sm:px-8 lg:px-20 relative overflow-hidden">
         <canvas id="codeBgCanvas" class="absolute top-0 left-0 w-full h-full -z-0"></canvas>
         <div class="max-w-6xl mx-auto w-full relative z-10">
             <div class="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
-                <!-- Profile Image - No border, with random fog effect behind -->
+                <!-- Profile Image - Circular with edit button -->
                 <div class="relative flex-shrink-0">
-                    <!-- طبقة الضباب العشوائية المتحركة خلف الصورة -->
-                    <canvas id="fogCanvas" class="absolute top-0 left-0 w-full h-full rounded-2xl pointer-events-none"
+                    <!-- Fog canvas (behind image) -->
+                    <canvas id="fogCanvas" class="absolute top-0 left-0 w-full h-full rounded-full pointer-events-none"
                         style="z-index: 0;"></canvas>
-
-                    <!-- الصورة نفسها بدون أي إطار ولا خلفية -->
-                    <div class="relative w-64 h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-2xl overflow-hidden shadow-2xl shadow-primary/30 hover-lift"
-                        style="z-index: 1; background: transparent;">
-                        <img src="./assets/profile-pic1.jpeg" alt="Ghazi Abdullah"
-                            class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-                            style="object-fit: cover; object-position: center;">
+                    <div class="profile-img-container" id="profileImgContainer">
+                        <img src="./assets/profile-pic1.jpeg" alt="Ghazi Abdullah" id="profileImage"
+                            onerror="this.onerror=null; this.src='https://randomuser.me/api/portraits/men/32.jpg';">
+                        <div class="edit-btn-overlay" id="editImageBtn">
+                            <i class="fas fa-camera"></i>
+                        </div>
                     </div>
                 </div>
-                <!-- Text Content (نفسه) -->
+                <!-- Text Content -->
                 <div class="text-center lg:text-left space-y-6 flex-1">
                     <p class="text-lg md:text-xl text-primary font-mono tracking-wider">SOFTWARE DEVELOPER</p>
                     <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
@@ -311,7 +431,7 @@
         </div>
     </section>
 
-    <!-- About Section -->
+    <!-- About Section (unchanged) -->
     <section id="about" class="py-20 px-4 sm:px-8 lg:px-20">
         <div class="max-w-4xl mx-auto">
             <h2 class="section-title text-center text-4xl md:text-5xl font-bold mb-16">About Me</h2>
@@ -353,11 +473,10 @@
         </div>
     </section>
 
-    <!-- Technical Skills Section -->
+    <!-- Technical Skills Section (unchanged) -->
     <section id="experience" class="py-20 px-4 sm:px-8 lg:px-20">
         <div class="max-w-6xl mx-auto">
             <h2 class="section-title text-center text-4xl md:text-5xl font-bold mb-16">Technical Skills</h2>
-            <!-- Full content here - kept as original but simplified for brevity. I will preserve full skills section -->
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
                 <div class="lg:col-span-2 card p-8 hover-lift">
                     <div class="flex items-center gap-4 mb-8">
@@ -382,26 +501,26 @@
                                 <div class="flex items-center gap-3 p-3 bg-gray-800/30 rounded-lg">
                                     <div
                                         class="w-8 h-8 rounded-lg bg-primary-transparent flex items-center justify-center">
-                                        <span class="text-primary font-bold text-sm">V</span>
-                                    </div><span class="font-medium text-gray-300">Vue.js & Vuex</span>
+                                        <span class="text-primary font-bold text-sm">V</span></div><span
+                                        class="font-medium text-gray-300">Vue.js & Vuex</span>
                                 </div>
                                 <div class="flex items-center gap-3 p-3 bg-gray-800/30 rounded-lg">
                                     <div
                                         class="w-8 h-8 rounded-lg bg-primary-transparent flex items-center justify-center">
-                                        <span class="text-primary font-bold text-sm">JS</span>
-                                    </div><span class="font-medium text-gray-300">JavaScript</span>
+                                        <span class="text-primary font-bold text-sm">JS</span></div><span
+                                        class="font-medium text-gray-300">JavaScript</span>
                                 </div>
                                 <div class="flex items-center gap-3 p-3 bg-gray-800/30 rounded-lg">
                                     <div
                                         class="w-8 h-8 rounded-lg bg-primary-transparent flex items-center justify-center">
-                                        <span class="text-primary font-bold text-sm">B</span>
-                                    </div><span class="font-medium text-gray-300">Bootstrap</span>
+                                        <span class="text-primary font-bold text-sm">B</span></div><span
+                                        class="font-medium text-gray-300">Bootstrap</span>
                                 </div>
                                 <div class="flex items-center gap-3 p-3 bg-gray-800/30 rounded-lg">
                                     <div
                                         class="w-8 h-8 rounded-lg bg-primary-transparent flex items-center justify-center">
-                                        <span class="text-primary font-bold text-sm">H/C</span>
-                                    </div><span class="font-medium text-gray-300">HTML5 & CSS3</span>
+                                        <span class="text-primary font-bold text-sm">H/C</span></div><span
+                                        class="font-medium text-gray-300">HTML5 & CSS3</span>
                                 </div>
                             </div>
                         </div>
@@ -415,14 +534,14 @@
                                 <div class="flex items-center gap-3 p-3 bg-gray-800/30 rounded-lg">
                                     <div
                                         class="w-8 h-8 rounded-lg bg-primary-transparent flex items-center justify-center">
-                                        <span class="text-primary font-bold text-sm">.NET</span>
-                                    </div><span class="font-medium text-gray-300">ASP.NET Core & MVC</span>
+                                        <span class="text-primary font-bold text-sm">.NET</span></div><span
+                                        class="font-medium text-gray-300">ASP.NET Core & MVC</span>
                                 </div>
                                 <div class="flex items-center gap-3 p-3 bg-gray-800/30 rounded-lg">
                                     <div
                                         class="w-8 h-8 rounded-lg bg-primary-transparent flex items-center justify-center">
-                                        <span class="text-primary font-bold text-sm">P</span>
-                                    </div><span class="font-medium text-gray-300">PHP & Laravel</span>
+                                        <span class="text-primary font-bold text-sm">P</span></div><span
+                                        class="font-medium text-gray-300">PHP & Laravel</span>
                                 </div>
                                 <div class="flex items-center gap-3 p-3 bg-gray-800/30 rounded-lg">
                                     <div
@@ -431,8 +550,7 @@
                                             <path fill-rule="evenodd"
                                                 d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
                                                 clip-rule="evenodd" />
-                                        </svg>
-                                    </div><span class="font-medium text-gray-300">RESTful APIs</span>
+                                        </svg></div><span class="font-medium text-gray-300">RESTful APIs</span>
                                 </div>
                             </div>
                         </div>
@@ -453,8 +571,7 @@
                     <div class="p-4 bg-gray-800/30 rounded-lg">
                         <div class="flex items-center gap-3 mb-3">
                             <div class="w-10 h-10 rounded-lg bg-primary-transparent flex items-center justify-center">
-                                <span class="text-primary font-bold">SQL</span>
-                            </div>
+                                <span class="text-primary font-bold">SQL</span></div>
                             <div><span class="font-medium block text-gray-300">SQL Server & MySQL</span><span
                                     class="text-gray-400 text-xs">Database Management</span></div>
                         </div>
@@ -483,16 +600,14 @@
                                 <svg class="w-6 h-6 text-primary" fill="currentColor" viewBox="0 0 24 24">
                                     <path
                                         d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                                </svg>
-                            </div>
+                                </svg></div>
                             <div class="text-primary font-bold mb-1">Git & GitHub</div>
                             <div class="text-gray-400 text-sm">Version Control</div>
                         </div>
                         <div class="p-4 bg-gray-800/30 rounded-lg text-center">
                             <div
                                 class="w-12 h-12 mx-auto mb-3 rounded-lg bg-primary-transparent flex items-center justify-center">
-                                <span class="text-primary font-bold text-xl">AWS</span>
-                            </div>
+                                <span class="text-primary font-bold text-xl">AWS</span></div>
                             <div class="text-primary font-bold mb-1">AWS</div>
                             <div class="text-gray-400 text-sm">Cloud Services</div>
                         </div>
@@ -517,7 +632,7 @@
         </div>
     </section>
 
-    <!-- Skills & Certificates Section (cleaned) -->
+    <!-- Skills & Certificates Section (unchanged) -->
     <section id="skills" class="py-20 px-4 sm:px-8 lg:px-20">
         <div class="max-w-6xl mx-auto">
             <h2 class="section-title text-center text-4xl md:text-5xl font-bold mb-16">Skills & Certificates</h2>
@@ -586,7 +701,7 @@
         </div>
     </section>
 
-    <!-- Projects Section (shortened for brevity - same as original but complete) -->
+    <!-- Projects Section (unchanged) -->
     <section id="projects" class="py-20 px-4 sm:px-8 lg:px-20">
         <div class="max-w-6xl mx-auto">
             <h2 class="section-title text-center text-4xl md:text-5xl font-bold mb-16">Projects</h2>
@@ -656,7 +771,7 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- Contact Section (unchanged) -->
     <section id="contact" class="py-20 px-4 sm:px-8 lg:px-20">
         <div class="max-w-4xl mx-auto">
             <h2 class="section-title text-center text-4xl md:text-5xl font-bold mb-16">Contact Me</h2>
@@ -664,17 +779,15 @@
                 <a href="mailto:ghaziali.rayan@gmail.com" class="card p-8 text-center hover-lift group">
                     <div
                         class="w-16 h-16 mx-auto mb-6 bg-primary-transparent rounded-full flex items-center justify-center group-hover:scale-110 transition">
-                        <i class="fas fa-envelope text-3xl text-primary"></i>
-                    </div>
+                        <i class="fas fa-envelope text-3xl text-primary"></i></div>
                     <p class="text-gray-400 mb-2">Let's talk via email</p>
                     <p class="text-primary font-bold text-lg">ghaziali.rayan@gmail.com</p>
                 </a>
                 <a href="https://www.linkedin.com/in/ghazi-al-rayan-45147723b/" target="_blank"
-                    rel="noopener noreferrer" class="card p-8 text-center hover-lift group">
+                    class="card p-8 text-center hover-lift group">
                     <div
                         class="w-16 h-16 mx-auto mb-6 bg-primary-transparent rounded-full flex items-center justify-center group-hover:scale-110 transition">
-                        <i class="fab fa-linkedin text-3xl text-primary"></i>
-                    </div>
+                        <i class="fab fa-linkedin text-3xl text-primary"></i></div>
                     <p class="text-gray-400 mb-2">Connect professionally</p>
                     <p class="text-primary font-bold text-lg">Ghazi Al-Rayan</p>
                 </a>
@@ -695,8 +808,31 @@
         </div>
     </div>
 
+    <!-- Image Editor Modal -->
+    <div id="imageEditorModal" class="editor-modal">
+        <div class="editor-container">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-2xl font-bold text-primary">تعديل الصورة</h3>
+                <button id="closeEditorBtn" class="text-white text-2xl hover:text-primary">&times;</button>
+            </div>
+            <div class="canvas-area">
+                <canvas id="editorCanvas" width="300" height="300"></canvas>
+            </div>
+            <div class="editor-controls">
+                <input type="file" id="uploadImageInput" accept="image/jpeg,image/png,image/jpg">
+                <button id="rotateLeftBtn"><i class="fas fa-undo-alt"></i> تدوير</button>
+                <button id="rotateRightBtn"><i class="fas fa-redo-alt"></i> تدوير</button>
+                <input type="range" id="zoomSlider" class="zoom-slider" min="0.5" max="2.5" step="0.01" value="1">
+                <button id="resetEditorBtn">إعادة ضبط</button>
+                <button id="saveImageBtn" class="bg-primary">حفظ الصورة</button>
+            </div>
+            <p class="text-gray-400 text-sm text-center mt-3">يمكنك سحب الصورة لتحريكها (Pan) وتكبيرها وتدويرها وقصها
+                بشكل دائري</p>
+        </div>
+    </div>
+
     <script>
-        // Modal functions
+        // ========== MODAL FUNCTIONS (Certificates) ==========
         function openCertModal(imgSrc, certName) {
             const modal = document.getElementById('certModal');
             const modalImg = document.getElementById('modalImage');
@@ -713,7 +849,7 @@
         }
         document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
 
-        // Mobile menu toggle
+        // ========== MOBILE MENU TOGGLE ==========
         const menuToggle = document.getElementById('menu-toggle');
         const mobileMenu = document.getElementById('mobile-menu');
         const menuIcon = document.getElementById('menu-icon');
@@ -733,15 +869,11 @@
             });
         }
 
-        // ========== RANDOM FOG / MIST EFFECT BEHIND PROFILE IMAGE ==========
+        // ========== FOG EFFECT (original) ==========
         (function () {
             const canvas = document.getElementById('fogCanvas');
             if (!canvas) return;
-
-            let width, height, ctx;
-            let animationId;
-            let particles = [];
-
+            let width, height, ctx, animationId, particles = [];
             function resizeCanvas() {
                 const container = canvas.parentElement;
                 const rect = container.getBoundingClientRect();
@@ -751,45 +883,27 @@
                 canvas.height = height;
                 initFog();
             }
-
             function initFog() {
                 particles = [];
-                // عدد جسيمات الضباب (كل جسيم عبارة عن دائرة ضبابية)
                 const particleCount = Math.floor(width * height / 4000);
                 for (let i = 0; i < particleCount; i++) {
                     particles.push({
-                        x: Math.random() * width,
-                        y: Math.random() * height,
-                        radius: Math.random() * 60 + 20, // أحجام مختلفة للضباب
-                        opacity: Math.random() * 0.25 + 0.05,
-                        speedX: (Math.random() - 0.5) * 0.4,
-                        speedY: (Math.random() - 0.5) * 0.2,
+                        x: Math.random() * width, y: Math.random() * height,
+                        radius: Math.random() * 60 + 20, opacity: Math.random() * 0.25 + 0.05,
+                        speedX: (Math.random() - 0.5) * 0.4, speedY: (Math.random() - 0.5) * 0.2,
                         blur: Math.random() * 20 + 10
                     });
                 }
             }
-
             function drawFog() {
-                if (!ctx) {
-                    ctx = canvas.getContext('2d');
-                    if (!ctx) return;
-                }
-
-                // مسح الخلفية بشكل شفاف تماماً
+                if (!ctx) { ctx = canvas.getContext('2d'); if (!ctx) return; }
                 ctx.clearRect(0, 0, width, height);
-
                 for (let p of particles) {
-                    // تحديث الموضع
-                    p.x += p.speedX;
-                    p.y += p.speedY;
-
-                    // إعادة تدوير الجسيمات عند الخروج
+                    p.x += p.speedX; p.y += p.speedY;
                     if (p.x > width + p.radius) p.x = -p.radius;
                     if (p.x < -p.radius) p.x = width + p.radius;
                     if (p.y > height + p.radius) p.y = -p.radius;
                     if (p.y < -p.radius) p.y = height + p.radius;
-
-                    // رسم دائرة ضبابية (تأثير غاوسي باستخدام shadowBlur أو radial gradient)
                     ctx.save();
                     ctx.shadowColor = `hsla(25, 85%, 65%, ${p.opacity * 0.8})`;
                     ctx.shadowBlur = p.blur;
@@ -797,36 +911,19 @@
                     ctx.arc(p.x, p.y, p.radius * 0.6, 0, Math.PI * 2);
                     ctx.fillStyle = `hsla(25, 70%, 60%, ${p.opacity})`;
                     ctx.fill();
-
-                    // طبقة ثانية لجعل الضباب أكثر طبيعية
                     ctx.beginPath();
                     ctx.arc(p.x - p.radius * 0.3, p.y - p.radius * 0.2, p.radius * 0.4, 0, Math.PI * 2);
                     ctx.fillStyle = `hsla(25, 80%, 65%, ${p.opacity * 0.6})`;
                     ctx.fill();
                     ctx.restore();
                 }
-
                 animationId = requestAnimationFrame(drawFog);
             }
-
-            function startFog() {
-                resizeCanvas();
-                drawFog();
-            }
-
-            // تشغيل التأثير عند تحميل الصفحة وتغيير الحجم
-            window.addEventListener('load', () => {
-                startFog();
-                window.addEventListener('resize', () => {
-                    resizeCanvas();
-                });
-            });
-
-            window.addEventListener('beforeunload', () => {
-                if (animationId) cancelAnimationFrame(animationId);
-            });
+            window.addEventListener('load', () => { resizeCanvas(); drawFog(); window.addEventListener('resize', resizeCanvas); });
+            window.addEventListener('beforeunload', () => { if (animationId) cancelAnimationFrame(animationId); });
         })();
-        // Dynamic background particles
+
+        // ========== DYNAMIC BACKGROUND PARTICLES (moving code) ==========
         (function () {
             const canvas = document.getElementById('codeBgCanvas');
             if (!canvas) return;
@@ -878,7 +975,154 @@
             window.addEventListener('beforeunload', () => { if (animationId) cancelAnimationFrame(animationId); });
         })();
 
-        // Smooth scroll
+        // ========== IMAGE EDITOR (Circular, Zoom, Pan, Rotate, Upload) ==========
+        const editorModal = document.getElementById('imageEditorModal');
+        const editBtn = document.getElementById('editImageBtn');
+        const closeEditorBtn = document.getElementById('closeEditorBtn');
+        const editorCanvas = document.getElementById('editorCanvas');
+        const editorCtx = editorCanvas.getContext('2d');
+        const uploadInputEditor = document.getElementById('uploadImageInput');
+        const zoomSliderEditor = document.getElementById('zoomSlider');
+        const rotateLeftBtn = document.getElementById('rotateLeftBtn');
+        const rotateRightBtn = document.getElementById('rotateRightBtn');
+        const resetEditorBtn = document.getElementById('resetEditorBtn');
+        const saveImageBtn = document.getElementById('saveImageBtn');
+        const profileImgElement = document.getElementById('profileImage');
+
+        let currentImg = new Image();
+        let currentAngleDeg = 0;
+        let currentZoom = 1;
+        let panX = 0, panY = 0;
+        let isDraggingEditor = false;
+        let lastX, lastY;
+
+        // Load current profile image into editor
+        function loadImageIntoEditor(src) {
+            currentImg = new Image();
+            currentImg.crossOrigin = "Anonymous";
+            currentImg.onload = () => {
+                resetEditorTransformations();
+                drawEditorCanvas();
+            };
+            currentImg.src = src;
+        }
+
+        function resetEditorTransformations() {
+            currentAngleDeg = 0;
+            currentZoom = 1;
+            panX = 0;
+            panY = 0;
+            zoomSliderEditor.value = 1;
+            drawEditorCanvas();
+        }
+
+        function drawEditorCanvas() {
+            if (!currentImg.complete) return;
+            const size = editorCanvas.width;
+            editorCtx.clearRect(0, 0, size, size);
+            editorCtx.save();
+            editorCtx.translate(size / 2, size / 2);
+            editorCtx.rotate(currentAngleDeg * Math.PI / 180);
+            editorCtx.scale(currentZoom, currentZoom);
+            editorCtx.translate(panX, panY);
+            const imgW = currentImg.width;
+            const imgH = currentImg.height;
+            editorCtx.drawImage(currentImg, -imgW / 2, -imgH / 2, imgW, imgH);
+            editorCtx.restore();
+            // Apply circular clip
+            editorCtx.save();
+            editorCtx.beginPath();
+            editorCtx.arc(size / 2, size / 2, size / 2, 0, Math.PI * 2);
+            editorCtx.clip();
+            editorCtx.clearRect(0, 0, size, size);
+            editorCtx.translate(size / 2, size / 2);
+            editorCtx.rotate(currentAngleDeg * Math.PI / 180);
+            editorCtx.scale(currentZoom, currentZoom);
+            editorCtx.translate(panX, panY);
+            editorCtx.drawImage(currentImg, -imgW / 2, -imgH / 2, imgW, imgH);
+            editorCtx.restore();
+            // Draw border
+            editorCtx.beginPath();
+            editorCtx.arc(size / 2, size / 2, size / 2, 0, Math.PI * 2);
+            editorCtx.strokeStyle = '#f97316';
+            editorCtx.lineWidth = 3;
+            editorCtx.stroke();
+        }
+
+        // Drag to pan
+        function onEditorMouseDown(e) {
+            isDraggingEditor = true;
+            const rect = editorCanvas.getBoundingClientRect();
+            const scaleX = editorCanvas.width / rect.width;
+            const scaleY = editorCanvas.height / rect.height;
+            lastX = (e.clientX - rect.left) * scaleX;
+            lastY = (e.clientY - rect.top) * scaleY;
+            editorCanvas.style.cursor = 'grabbing';
+        }
+        function onEditorMouseMove(e) {
+            if (!isDraggingEditor) return;
+            const rect = editorCanvas.getBoundingClientRect();
+            const scaleX = editorCanvas.width / rect.width;
+            const scaleY = editorCanvas.height / rect.height;
+            const currentX = (e.clientX - rect.left) * scaleX;
+            const currentY = (e.clientY - rect.top) * scaleY;
+            panX += currentX - lastX;
+            panY += currentY - lastY;
+            lastX = currentX;
+            lastY = currentY;
+            drawEditorCanvas();
+        }
+        function onEditorMouseUp() { isDraggingEditor = false; editorCanvas.style.cursor = 'grab'; }
+        editorCanvas.addEventListener('mousedown', onEditorMouseDown);
+        window.addEventListener('mousemove', onEditorMouseMove);
+        window.addEventListener('mouseup', onEditorMouseUp);
+        editorCanvas.style.cursor = 'grab';
+
+        zoomSliderEditor.addEventListener('input', (e) => {
+            currentZoom = parseFloat(e.target.value);
+            drawEditorCanvas();
+        });
+        rotateLeftBtn.addEventListener('click', () => { currentAngleDeg -= 90; drawEditorCanvas(); });
+        rotateRightBtn.addEventListener('click', () => { currentAngleDeg += 90; drawEditorCanvas(); });
+        resetEditorBtn.addEventListener('click', () => { resetEditorTransformations(); });
+        uploadInputEditor.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (ev) => {
+                    currentImg = new Image();
+                    currentImg.onload = () => { resetEditorTransformations(); drawEditorCanvas(); };
+                    currentImg.src = ev.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+        saveImageBtn.addEventListener('click', () => {
+            const tempCanvas = document.createElement('canvas');
+            tempCanvas.width = editorCanvas.width;
+            tempCanvas.height = editorCanvas.height;
+            const tempCtx = tempCanvas.getContext('2d');
+            tempCtx.save();
+            tempCtx.beginPath();
+            tempCtx.arc(editorCanvas.width / 2, editorCanvas.height / 2, editorCanvas.width / 2, 0, Math.PI * 2);
+            tempCtx.clip();
+            tempCtx.translate(editorCanvas.width / 2, editorCanvas.height / 2);
+            tempCtx.rotate(currentAngleDeg * Math.PI / 180);
+            tempCtx.scale(currentZoom, currentZoom);
+            tempCtx.translate(panX, panY);
+            tempCtx.drawImage(currentImg, -currentImg.width / 2, -currentImg.height / 2, currentImg.width, currentImg.height);
+            tempCtx.restore();
+            const dataURL = tempCanvas.toDataURL('image/png');
+            profileImgElement.src = dataURL;
+            closeEditor();
+        });
+        function openEditor() { editorModal.classList.add('active'); loadImageIntoEditor(profileImgElement.src); }
+        function closeEditor() { editorModal.classList.remove('active'); }
+        editBtn.addEventListener('click', openEditor);
+        closeEditorBtn.addEventListener('click', closeEditor);
+        window.addEventListener('click', (e) => { if (e.target === editorModal) closeEditor(); });
+
+        // ========== SMOOTH SCROLL ==========
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -887,7 +1131,7 @@
             });
         });
 
-        // Adjust home padding
+        // ========== ADJUST HOME PADDING ==========
         function adjustPadding() {
             const nav = document.querySelector('nav');
             const home = document.getElementById('home');
@@ -896,7 +1140,7 @@
         window.addEventListener('load', adjustPadding);
         window.addEventListener('resize', adjustPadding);
 
-        // Fade-in on scroll
+        // ========== FADE-IN ON SCROLL ==========
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('animate-fade-in'); observer.unobserve(entry.target); } });
         }, { threshold: 0.1 });
